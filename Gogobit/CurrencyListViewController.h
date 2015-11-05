@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface CurrencyListViewController : UIViewController <UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *currencyTableView;
 
 @end
 
