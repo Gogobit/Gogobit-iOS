@@ -16,6 +16,7 @@
 		1046DF791BE7C7D700139757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */; };
 		1046DF841BE7C7D700139757 /* GogobitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF831BE7C7D700139757 /* GogobitTests.m */; };
 		1046DF8F1BE7C7D800139757 /* GogobitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF8E1BE7C7D800139757 /* GogobitUITests.m */; };
+		10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		1046DF8A1BE7C7D800139757 /* GogobitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogobitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF8E1BE7C7D800139757 /* GogobitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GogobitUITests.m; sourceTree = "<group>"; };
 		1046DF901BE7C7D800139757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRateViewController.h; sourceTree = "<group>"; };
+		10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				1046DF6D1BE7C7D700139757 /* AppDelegate.m */,
 				1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */,
 				1046DF701BE7C7D700139757 /* CurrencyListViewController.m */,
+				10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */,
+				10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */,
 				10026FCA1BEBB58C00F229F0 /* GogobitTabBarController.h */,
 				10026FCB1BEBB58C00F229F0 /* GogobitTabBarController.m */,
 				1046DF721BE7C7D700139757 /* Main.storyboard */,
@@ -278,6 +283,7 @@
 				1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */,
 				1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */,
 				1046DF6B1BE7C7D700139757 /* main.m in Sources */,
+				10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */,
 				10026FCC1BEBB58C00F229F0 /* GogobitTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

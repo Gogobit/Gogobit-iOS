@@ -4,12 +4,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--換算-->
         <scene sceneID="Jnk-ck-nxe">
             <objects>
-                <viewController id="UMD-kh-GOh" sceneMemberID="viewController">
+                <viewController id="UMD-kh-GOh" customClass="ExchangeRateViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CgJ-hP-8Yp"/>
                         <viewControllerLayoutGuide type="bottom" id="XlD-9E-u6p"/>
@@ -17,16 +18,79 @@
                     <view key="view" contentMode="scaleToFill" id="E2q-e1-ZkU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QVJ-VA-u8l">
+                                <rect key="frame" x="210" y="421" width="180" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-48-9pG">
+                                <rect key="frame" x="140" y="197" width="320" height="216"/>
+                                <animations/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請輸入持有 Bitcoin 數量 " textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-Su-0Wn">
+                                <rect key="frame" x="90" y="91" width="420" height="98"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="82"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-5N-SFQ">
+                                <rect key="frame" x="411" y="425" width="33" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EkZ-5N-SFQ" firstAttribute="centerY" secondItem="QVJ-VA-u8l" secondAttribute="centerY" id="75q-kG-ihQ"/>
+                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="width" secondItem="E2q-e1-ZkU" secondAttribute="width" multiplier="0.7" id="BEu-ev-AxS"/>
+                            <constraint firstItem="QVJ-VA-u8l" firstAttribute="width" secondItem="E2q-e1-ZkU" secondAttribute="width" multiplier="0.3" id="OXi-RK-B4x"/>
+                            <constraint firstItem="QVJ-VA-u8l" firstAttribute="top" secondItem="Q1L-48-9pG" secondAttribute="bottom" constant="8" id="Wk4-nc-Bsi"/>
+                            <constraint firstItem="Q1L-48-9pG" firstAttribute="top" secondItem="z3c-Su-0Wn" secondAttribute="bottom" constant="8" id="faX-bU-ABj"/>
+                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" id="i8G-TX-xyt"/>
+                            <constraint firstItem="QVJ-VA-u8l" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" id="kLm-sA-EUZ"/>
+                            <constraint firstItem="EkZ-5N-SFQ" firstAttribute="leading" secondItem="QVJ-VA-u8l" secondAttribute="trailing" constant="21" id="mKD-cD-gYw"/>
+                            <constraint firstItem="XlD-9E-u6p" firstAttribute="top" secondItem="QVJ-VA-u8l" secondAttribute="bottom" constant="100" id="pDt-Kz-PwD"/>
+                            <constraint firstItem="Q1L-48-9pG" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" id="rjS-OJ-1KX"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="oNx-TN-Cc9"/>
+                    <tabBarItem key="tabBarItem" title="換算" id="oNx-TN-Cc9"/>
+                    <connections>
+                        <outlet property="currencyPickerView" destination="Q1L-48-9pG" id="yyB-d7-opO"/>
+                        <outlet property="inputTextField" destination="QVJ-VA-u8l" id="kjy-2U-fws"/>
+                        <outlet property="mainRateLabel" destination="z3c-Su-0Wn" id="XAz-cQ-azv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T69-aa-DRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113" y="544"/>
         </scene>
-        <!--Item 1-->
+        <!--設定-->
+        <scene sceneID="AMn-ew-QVA">
+            <objects>
+                <viewController id="y2z-nf-pH8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Hl-jy-qPD"/>
+                        <viewControllerLayoutGuide type="bottom" id="mdU-Aw-A7f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OYV-N8-VL3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="設定" id="sDg-m3-KEM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIB-A3-kw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="1421"/>
+        </scene>
+        <!--市場-->
         <scene sceneID="tzJ-79-Nt8">
             <objects>
                 <viewController id="gTx-lx-a6k" customClass="CurrencyListViewController" sceneMemberID="viewController">
@@ -51,7 +115,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qeb-oe-bhT">
-                                                    <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                                    <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -59,7 +123,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gsl-s8-370">
-                                                    <rect key="frame" x="544" y="12" width="41" height="20"/>
+                                                    <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -98,7 +162,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="soj-xP-QSD"/>
+                    <tabBarItem key="tabBarItem" title="市場" id="soj-xP-QSD"/>
                     <connections>
                         <outlet property="currencyTableView" destination="Hb2-KP-gA4" id="Ibz-KX-QSJ"/>
                     </connections>
@@ -118,8 +182,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gTx-lx-a6k" kind="relationship" relationship="viewControllers" id="9O9-Qg-2RP"/>
                         <segue destination="UMD-kh-GOh" kind="relationship" relationship="viewControllers" id="vok-QS-363"/>
+                        <segue destination="gTx-lx-a6k" kind="relationship" relationship="viewControllers" id="9O9-Qg-2RP"/>
+                        <segue destination="y2z-nf-pH8" kind="relationship" relationship="viewControllers" id="krZ-Rc-Vek"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvP-OK-CFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
