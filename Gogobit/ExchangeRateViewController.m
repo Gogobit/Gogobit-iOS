@@ -12,7 +12,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.exchangeNameList = [[NSMutableArray alloc] initWithArray:@[@"Coinbase", @"Bitstamp", @"Maicoin", @"OKCoin", @"Bitfinex"]];
+    self.exchangeNameList = [[NSMutableArray alloc] initWithArray:@[@"Coinbase", @"Bitstamp", @"Maicoin(USD)", @"Maicoin(NTD)", @"OKCoin", @"Bitfinex"]];
     [self.inputTextField addTarget:self
                   action:@selector(inputTextFieldDidChange:)
         forControlEvents:UIControlEventEditingChanged];
@@ -22,6 +22,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[ExchangesClient sharedClient] getMaicoinUSDPriceWithSender:self];
+    [[ExchangesClient sharedClient] getMaicoinTWDPriceWithSender:self];
+}
+
+- (void)appDidGetMaicoinTWDWithData:(NSDictionary *)data {
+
 }
 
 - (void)didReceiveMemoryWarning {

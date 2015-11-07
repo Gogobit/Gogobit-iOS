@@ -29,17 +29,24 @@
                                 <rect key="frame" x="140" y="197" width="320" height="216"/>
                                 <animations/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請輸入持有 Bitcoin 數量 " textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-Su-0Wn">
-                                <rect key="frame" x="90" y="91" width="420" height="98"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin 數量 " textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-Su-0Wn">
+                                <rect key="frame" x="70" y="110" width="360" height="79"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="82"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="66"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-5N-SFQ">
-                                <rect key="frame" x="411" y="425" width="33" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-5N-SFQ">
+                                <rect key="frame" x="411" y="427" width="33" height="20"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NTD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br0-vB-yT0">
+                                <rect key="frame" x="448" y="128" width="73" height="43"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -48,11 +55,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EkZ-5N-SFQ" firstAttribute="centerY" secondItem="QVJ-VA-u8l" secondAttribute="centerY" id="75q-kG-ihQ"/>
-                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="width" secondItem="E2q-e1-ZkU" secondAttribute="width" multiplier="0.7" id="BEu-ev-AxS"/>
+                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="width" secondItem="E2q-e1-ZkU" secondAttribute="width" multiplier="0.6" id="BEu-ev-AxS"/>
+                            <constraint firstItem="br0-vB-yT0" firstAttribute="leading" secondItem="z3c-Su-0Wn" secondAttribute="trailing" constant="18" id="Jns-3P-QRM"/>
                             <constraint firstItem="QVJ-VA-u8l" firstAttribute="width" secondItem="E2q-e1-ZkU" secondAttribute="width" multiplier="0.3" id="OXi-RK-B4x"/>
                             <constraint firstItem="QVJ-VA-u8l" firstAttribute="top" secondItem="Q1L-48-9pG" secondAttribute="bottom" constant="8" id="Wk4-nc-Bsi"/>
+                            <constraint firstItem="br0-vB-yT0" firstAttribute="centerY" secondItem="z3c-Su-0Wn" secondAttribute="centerY" id="dma-x4-yAL"/>
                             <constraint firstItem="Q1L-48-9pG" firstAttribute="top" secondItem="z3c-Su-0Wn" secondAttribute="bottom" constant="8" id="faX-bU-ABj"/>
-                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" id="i8G-TX-xyt"/>
+                            <constraint firstItem="z3c-Su-0Wn" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" constant="-50" id="i8G-TX-xyt"/>
                             <constraint firstItem="QVJ-VA-u8l" firstAttribute="centerX" secondItem="E2q-e1-ZkU" secondAttribute="centerX" id="kLm-sA-EUZ"/>
                             <constraint firstItem="EkZ-5N-SFQ" firstAttribute="leading" secondItem="QVJ-VA-u8l" secondAttribute="trailing" constant="21" id="mKD-cD-gYw"/>
                             <constraint firstItem="XlD-9E-u6p" firstAttribute="top" secondItem="QVJ-VA-u8l" secondAttribute="bottom" constant="100" id="pDt-Kz-PwD"/>
@@ -64,6 +73,7 @@
                         <outlet property="currencyPickerView" destination="Q1L-48-9pG" id="yyB-d7-opO"/>
                         <outlet property="inputTextField" destination="QVJ-VA-u8l" id="kjy-2U-fws"/>
                         <outlet property="mainRateLabel" destination="z3c-Su-0Wn" id="XAz-cQ-azv"/>
+                        <outlet property="typeLabel" destination="br0-vB-yT0" id="IzP-n2-fAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T69-aa-DRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
