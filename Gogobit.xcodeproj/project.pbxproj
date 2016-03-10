@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		10026FCC1BEBB58C00F229F0 /* GogobitTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10026FCB1BEBB58C00F229F0 /* GogobitTabBarController.m */; };
+		100D0AA91C8B22F000381929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100D0AA81C8B22F000381929 /* Assets.xcassets */; };
+		100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100D0AAB1C8B29AA00381929 /* SettingsViewController.m */; };
+		100D0AAF1C8BA83D00381929 /* FeedbackWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */; };
 		1046DF6B1BE7C7D700139757 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6A1BE7C7D700139757 /* main.m */; };
 		1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6D1BE7C7D700139757 /* AppDelegate.m */; };
 		1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF701BE7C7D700139757 /* CurrencyListViewController.m */; };
 		1046DF741BE7C7D700139757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF721BE7C7D700139757 /* Main.storyboard */; };
-		1046DF761BE7C7D700139757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF751BE7C7D700139757 /* Assets.xcassets */; };
 		1046DF791BE7C7D700139757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */; };
 		1046DF841BE7C7D700139757 /* GogobitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF831BE7C7D700139757 /* GogobitTests.m */; };
 		1046DF8F1BE7C7D800139757 /* GogobitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF8E1BE7C7D800139757 /* GogobitUITests.m */; };
+		1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */; };
+		1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */; };
+		107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C99EE1C8E894300C79A3D /* AboutViewController.m */; };
 		10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */; };
 		10E759731BEE581500BB78FA /* ExchangesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E759721BEE581500BB78FA /* ExchangesClient.m */; };
 		234B18BA51FA8AFCCBEAE58D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19126C418D876DD229041C85 /* libPods.a */; };
@@ -41,6 +46,11 @@
 /* Begin PBXFileReference section */
 		10026FCA1BEBB58C00F229F0 /* GogobitTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitTabBarController.h; sourceTree = "<group>"; };
 		10026FCB1BEBB58C00F229F0 /* GogobitTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GogobitTabBarController.m; sourceTree = "<group>"; };
+		100D0AA81C8B22F000381929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		100D0AAA1C8B29AA00381929 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		100D0AAB1C8B29AA00381929 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		100D0AAD1C8BA83D00381929 /* FeedbackWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackWebViewController.h; sourceTree = "<group>"; };
+		100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackWebViewController.m; sourceTree = "<group>"; };
 		1046DF661BE7C7D700139757 /* Gogobit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gogobit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF6A1BE7C7D700139757 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1046DF6C1BE7C7D700139757 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,7 +58,6 @@
 		1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyListViewController.h; sourceTree = "<group>"; };
 		1046DF701BE7C7D700139757 /* CurrencyListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyListViewController.m; sourceTree = "<group>"; };
 		1046DF731BE7C7D700139757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1046DF751BE7C7D700139757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1046DF781BE7C7D700139757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1046DF7A1BE7C7D700139757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1046DF7F1BE7C7D700139757 /* GogobitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogobitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +66,11 @@
 		1046DF8A1BE7C7D800139757 /* GogobitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogobitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF8E1BE7C7D800139757 /* GogobitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GogobitUITests.m; sourceTree = "<group>"; };
 		1046DF901BE7C7D800139757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeTableViewCell.xib; sourceTree = "<group>"; };
+		1046F8AA1C80A27C00C48198 /* ExchangeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeTableViewCell.h; path = ExchangeTableViewCell/ExchangeTableViewCell.h; sourceTree = "<group>"; };
+		1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeTableViewCell.m; path = ExchangeTableViewCell/ExchangeTableViewCell.m; sourceTree = "<group>"; };
+		107C99ED1C8E894300C79A3D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		107C99EE1C8E894300C79A3D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRateViewController.h; sourceTree = "<group>"; };
 		10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRateViewController.m; sourceTree = "<group>"; };
 		10E759711BEE581500BB78FA /* ExchangesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangesClient.h; sourceTree = "<group>"; };
@@ -120,17 +134,24 @@
 			children = (
 				1046DF6C1BE7C7D700139757 /* AppDelegate.h */,
 				1046DF6D1BE7C7D700139757 /* AppDelegate.m */,
+				1046F8A91C80A22900C48198 /* ExchangeTableViewCell */,
 				1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */,
 				1046DF701BE7C7D700139757 /* CurrencyListViewController.m */,
 				10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */,
 				10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */,
+				100D0AAA1C8B29AA00381929 /* SettingsViewController.h */,
+				100D0AAB1C8B29AA00381929 /* SettingsViewController.m */,
+				100D0AAD1C8BA83D00381929 /* FeedbackWebViewController.h */,
+				100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */,
+				107C99ED1C8E894300C79A3D /* AboutViewController.h */,
+				107C99EE1C8E894300C79A3D /* AboutViewController.m */,
 				10026FCA1BEBB58C00F229F0 /* GogobitTabBarController.h */,
 				10026FCB1BEBB58C00F229F0 /* GogobitTabBarController.m */,
 				10E759741BEE59E800BB78FA /* GogobitHttpProtocol.h */,
 				10E759711BEE581500BB78FA /* ExchangesClient.h */,
 				10E759721BEE581500BB78FA /* ExchangesClient.m */,
+				100D0AA81C8B22F000381929 /* Assets.xcassets */,
 				1046DF721BE7C7D700139757 /* Main.storyboard */,
-				1046DF751BE7C7D700139757 /* Assets.xcassets */,
 				1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */,
 				1046DF7A1BE7C7D700139757 /* Info.plist */,
 				1046DF691BE7C7D700139757 /* Supporting Files */,
@@ -162,6 +183,16 @@
 				1046DF901BE7C7D800139757 /* Info.plist */,
 			);
 			path = GogobitUITests;
+			sourceTree = "<group>";
+		};
+		1046F8A91C80A22900C48198 /* ExchangeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */,
+				1046F8AA1C80A27C00C48198 /* ExchangeTableViewCell.h */,
+				1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */,
+			);
+			name = ExchangeTableViewCell;
 			sourceTree = "<group>";
 		};
 		55F5EC85A330B61FD8534F42 /* Frameworks */ = {
@@ -251,6 +282,7 @@
 				TargetAttributes = {
 					1046DF651BE7C7D700139757 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = Q4GRD8C97W;
 					};
 					1046DF7E1BE7C7D700139757 = {
 						CreatedOnToolsVersion = 7.1;
@@ -287,8 +319,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */,
 				1046DF791BE7C7D700139757 /* LaunchScreen.storyboard in Resources */,
-				1046DF761BE7C7D700139757 /* Assets.xcassets in Resources */,
+				100D0AA91C8B22F000381929 /* Assets.xcassets in Resources */,
 				1046DF741BE7C7D700139757 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,7 +398,11 @@
 				1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */,
 				1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */,
 				1046DF6B1BE7C7D700139757 /* main.m in Sources */,
+				100D0AAF1C8BA83D00381929 /* FeedbackWebViewController.m in Sources */,
+				100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */,
 				10E759731BEE581500BB78FA /* ExchangesClient.m in Sources */,
+				107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */,
+				1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */,
 				10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */,
 				10026FCC1BEBB58C00F229F0 /* GogobitTabBarController.m in Sources */,
 			);
@@ -507,10 +544,13 @@
 			baseConfigurationReference = 69AC3125523CCE6270DC48A6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gogobit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HuangJi.Gogobit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -519,10 +559,13 @@
 			baseConfigurationReference = 5ECDDF78059F1E82C240C7A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gogobit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HuangJi.Gogobit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
