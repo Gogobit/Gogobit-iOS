@@ -90,6 +90,7 @@
 }
 
 - (void)getAllExchangesCurrency {
+    [self getTodayPrice];
     [self getCoinbasePrice];
     [self getbitstampPrice];
     [self getMaicoinPrice];
@@ -150,7 +151,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CellIdentifier";
-
+    float todayPrice = [[[NSUserDefaults standardUserDefaults] objectForKey:@"TodayPriceNumber"] floatValue];
+    float rate = (([self.currencyList[indexPath.row] floatValue] - todayPrice) / todayPrice) * 100;
 //    [tableView registerNib:[UINib nibWithNibName:@"ExchangeTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     ExchangeTableViewCell *cell = (ExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -161,9 +163,15 @@
         cell.priceLabel.text = [NSString stringWithFormat:@"%.2f", [self.currencyList[indexPath.row] floatValue]];
         cell.exchangeNameLabel.text = self.exchangeNameList[indexPath.row];
         cell.exchangeImageView.image = [UIImage imageNamed:self.exchangeImagePathList[indexPath.row]];
-        cell.arrowImageView.image = [UIImage imageNamed:@"redArrow"];
-        cell.rateLabel.text = @"3.2%";
-        cell.rateLabel.textColor = [UIColor redColor];
+        cell.rateLabel.text = [NSString stringWithFormat:@"%.1f%%", rate];
+        if (rate >= 0) {
+            cell.rateLabel.textColor = [UIColor greenColor];
+            cell.arrowImageView.image = [UIImage imageNamed:@"greenArrow"];
+        }
+        else {
+            cell.rateLabel.textColor = [UIColor redColor];
+            cell.arrowImageView.image = [UIImage imageNamed:@"redArrow"];
+        }
     }
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
@@ -181,6 +189,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getTodayPrice {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager GET:DAILY_USD_PRICE_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        float todayPrice = [responseObject[@"data"][@"prices"][0][@"price"] floatValue];
+        NSNumber *todayPriceNumber = [NSNumber numberWithFloat:todayPrice];
+        [[NSUserDefaults standardUserDefaults] setObject:todayPriceNumber forKey:@"TodayPriceNumber"];
+        [self.currencyTableView reloadData];
+//        self.priceFlagArray[0] = @1;
+//        [self checkGetAllPricesCompleted];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error!");
+    }];
 }
 
 - (void)getCoinbasePrice {
