@@ -11,11 +11,11 @@
 		100D0AA91C8B22F000381929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100D0AA81C8B22F000381929 /* Assets.xcassets */; };
 		100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100D0AAB1C8B29AA00381929 /* SettingsViewController.m */; };
 		100D0AAF1C8BA83D00381929 /* FeedbackWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */; };
+		103DF9321C945F6400C7C651 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 103DF9311C945F6400C7C651 /* Launch Screen.storyboard */; };
 		1046DF6B1BE7C7D700139757 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6A1BE7C7D700139757 /* main.m */; };
 		1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6D1BE7C7D700139757 /* AppDelegate.m */; };
 		1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF701BE7C7D700139757 /* CurrencyListViewController.m */; };
 		1046DF741BE7C7D700139757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF721BE7C7D700139757 /* Main.storyboard */; };
-		1046DF791BE7C7D700139757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */; };
 		1046DF841BE7C7D700139757 /* GogobitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF831BE7C7D700139757 /* GogobitTests.m */; };
 		1046DF8F1BE7C7D800139757 /* GogobitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF8E1BE7C7D800139757 /* GogobitUITests.m */; };
 		1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */; };
@@ -51,6 +51,7 @@
 		100D0AAB1C8B29AA00381929 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		100D0AAD1C8BA83D00381929 /* FeedbackWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackWebViewController.h; sourceTree = "<group>"; };
 		100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackWebViewController.m; sourceTree = "<group>"; };
+		103DF9311C945F6400C7C651 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1046DF661BE7C7D700139757 /* Gogobit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gogobit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF6A1BE7C7D700139757 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1046DF6C1BE7C7D700139757 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyListViewController.h; sourceTree = "<group>"; };
 		1046DF701BE7C7D700139757 /* CurrencyListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyListViewController.m; sourceTree = "<group>"; };
 		1046DF731BE7C7D700139757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1046DF781BE7C7D700139757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1046DF7A1BE7C7D700139757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1046DF7F1BE7C7D700139757 /* GogobitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogobitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF831BE7C7D700139757 /* GogobitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GogobitTests.m; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				10E759721BEE581500BB78FA /* ExchangesClient.m */,
 				100D0AA81C8B22F000381929 /* Assets.xcassets */,
 				1046DF721BE7C7D700139757 /* Main.storyboard */,
-				1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */,
+				103DF9311C945F6400C7C651 /* Launch Screen.storyboard */,
 				1046DF7A1BE7C7D700139757 /* Info.plist */,
 				1046DF691BE7C7D700139757 /* Supporting Files */,
 			);
@@ -320,8 +320,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */,
-				1046DF791BE7C7D700139757 /* LaunchScreen.storyboard in Resources */,
 				100D0AA91C8B22F000381929 /* Assets.xcassets in Resources */,
+				103DF9321C945F6400C7C651 /* Launch Screen.storyboard in Resources */,
 				1046DF741BE7C7D700139757 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,14 +448,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		1046DF771BE7C7D700139757 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1046DF781BE7C7D700139757 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -544,6 +536,7 @@
 			baseConfigurationReference = 69AC3125523CCE6270DC48A6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gogobit/Info.plist;
@@ -559,6 +552,7 @@
 			baseConfigurationReference = 5ECDDF78059F1E82C240C7A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gogobit/Info.plist;

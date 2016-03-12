@@ -85,8 +85,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[ExchangesClient sharedClient] getMaicoinUSDPriceWithSender:self];
-    [[ExchangesClient sharedClient] getMaicoinTWDPriceWithSender:self];
+//    [[ExchangesClient sharedClient] getMaicoinUSDPriceWithSender:self];
+//    [[ExchangesClient sharedClient] getMaicoinTWDPriceWithSender:self];
 }
 
 - (void)appDidGetMaicoinTWDWithData:(NSDictionary *)data {

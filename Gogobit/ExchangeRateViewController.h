@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ExchangesClient.h"
 #import "GogobitHttpProtocol.h"
 
 @interface ExchangeRateViewController : UIViewController <GogobitHttpProtocol, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>

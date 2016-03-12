@@ -211,3 +211,4 @@ xcuserdata
 Pods/
 DiQi-wallet-iOS.xcworkspace/
 Gogobit.xcworkspace/
+*.xcuserstate
