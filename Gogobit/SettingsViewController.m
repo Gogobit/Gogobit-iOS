@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingsViewController ()
 
@@ -16,15 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.settingsTableView.backgroundColor = [UIColor clearColor];
-    self.settingsArray = [[NSMutableArray alloc] initWithArray:@[@"About", @"Version", @"Give us some feedback!"]];
-    self.settingsDetailArray = [[NSMutableArray alloc] initWithArray:@[@"", @"v0.1.6", @""]];
+    self.settingsArray = [[NSMutableArray alloc] initWithArray:@[@"關於", @"幣別", @"回饋意見"]];
+    self.settingsDetailArray = [[NSMutableArray alloc] initWithArray:@[@"", @"", @""]];
     // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.topItem.title = @"設定";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.settingsArray.count;
@@ -43,12 +45,21 @@
     else if (indexPath.row == 0) {
         [self performSegueWithIdentifier:@"ToAboutViewSegue" sender:self];
     }
+    else if (indexPath.row == 1) {
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"] isEqualToString:@"TWD"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"USD" forKey:@"currencyType"];
+        }
+        else {
+            [[NSUserDefaults standardUserDefaults] setObject:@"TWD" forKey:@"currencyType"];
+        }
+        [self.tableView reloadData];
+    }
 //    self.someProperty = [self.someArray objectAtIndex:indexPath.row];
 //    [self performSegueWithIdentifier:@"segueID" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Feedback" style:UIBarButtonItemStylePlain target:nil action:nil];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Feedback" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //    return @"Settings";
@@ -67,6 +78,10 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.text = self.settingsDetailArray[indexPath.row];
     cell.detailTextLabel.textColor = [UIColor whiteColor];
+    if (indexPath.row == 1) {
+        cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:255/255.0f green:139/255.0f blue:16/255.0f alpha:1.0f];
+    }
 
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     return cell;

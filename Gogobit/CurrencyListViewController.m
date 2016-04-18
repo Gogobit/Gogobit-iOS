@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAveragePrice)
                                                  name:@"NowCanGetAveragePrice"
@@ -57,6 +57,10 @@
         sum += [self.currencyList[i] floatValue];
     }
     self.avgPriceLabel.text = [NSString stringWithFormat:@"%.2f", sum / self.currencyList.count];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"] isEqualToString:@"TWD"]) {
+        double currency = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currency"] doubleValue];
+        self.avgPriceLabel.text = [NSString stringWithFormat:@"%.2f", sum / self.currencyList.count * currency];
+    }
     NSNumber *averagePrice = [[NSNumber alloc] initWithFloat:sum / self.currencyList.count];
     [[NSUserDefaults standardUserDefaults] setObject:averagePrice forKey:@"AveragePrice"];
     [self.hud hide:YES];
@@ -67,6 +71,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager GET:YAHOO_USDTWD_CURRENCY_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.usdToTwdCurrenyString = responseObject[@"query"][@"results"][@"rate"][@"Rate"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.usdToTwdCurrenyString forKey:@"currency"];
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"DidGetUsdTwdRate"
          object:self];
@@ -100,6 +105,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.topItem.title = @"交易所";
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:NSLocalizedString(@"錯誤", @"")
                                 message:NSLocalizedString(@"您目前沒有網路連接，請檢查後再試。", @"")
@@ -161,6 +167,12 @@
     if (tableView == self.currencyTableView) {
         cell.backgroundColor = [UIColor clearColor];
         cell.priceLabel.text = [NSString stringWithFormat:@"%.2f", [self.currencyList[indexPath.row] floatValue]];
+
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"] isEqualToString:@"TWD"]) {
+            double currency = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currency"] doubleValue];
+            cell.priceLabel.text = [NSString stringWithFormat:@"%.2f", [self.currencyList[indexPath.row] floatValue] * currency];
+        }
+        cell.unitLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"];
         cell.exchangeNameLabel.text = self.exchangeNameList[indexPath.row];
         cell.exchangeImageView.image = [UIImage imageNamed:self.exchangeImagePathList[indexPath.row]];
         cell.rateLabel.text = [NSString stringWithFormat:@"%.1f%%", rate];

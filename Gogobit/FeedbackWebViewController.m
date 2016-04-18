@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
-    self.navigationItem.title = @"Feedback";
+//    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.title = @"回饋意見";
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://wilsonhuang.typeform.com/to/FK0qpl"]];
     self.feedbackWebView.delegate = self;
     self.feedbackWebView.scalesPageToFit = YES;

@@ -11,5 +11,6 @@
 @interface AboutViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *qrCodeImageView;
+@property (weak, nonatomic) IBOutlet UIView *addressLabel;
 
 @end
