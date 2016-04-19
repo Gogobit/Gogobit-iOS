@@ -1,37 +1,37 @@
 //
-//  FeedbackWebViewController.m
+//  ArticleWebViewController.m
 //  Gogobit
 //
-//  Created by Wilson H. on 3/6/16.
+//  Created by Wilson H. on 4/11/16.
 //  Copyright © 2016 Wilson H. All rights reserved.
 //
 
-#import "FeedbackWebViewController.h"
+#import "ArticleWebViewController.h"
 
-@interface FeedbackWebViewController () <UIWebViewDelegate>
+@interface ArticleWebViewController ()
 
 @end
 
-@implementation FeedbackWebViewController
+@implementation ArticleWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"回饋意見";
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://wilsonhuang.typeform.com/to/FK0qpl"]];
-    self.feedbackWebView.delegate = self;
-    self.feedbackWebView.scalesPageToFit = YES;
-    [self.feedbackWebView loadRequest:request];
+    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleUrl]];
+    self.articleWebView.delegate = self;
+    self.articleWebView.scalesPageToFit = YES;
+    [self.articleWebView loadRequest:request];
     // Do any additional setup after loading the view.
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.hud hide:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

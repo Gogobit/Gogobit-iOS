@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *settingsTableView;
 @property (strong, nonatomic) NSMutableArray *settingsArray;
 @property (strong, nonatomic) NSMutableArray *settingsDetailArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
