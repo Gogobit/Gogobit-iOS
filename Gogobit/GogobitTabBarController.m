@@ -13,7 +13,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setSelectedIndex:2];
+    [self setSelectedIndex:1];
     [[UITabBar appearance] setBarTintColor:[UIColor grayColor]];
     [[UITabBar appearance] setBackgroundImage:[UIImage new]];
     [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1]];

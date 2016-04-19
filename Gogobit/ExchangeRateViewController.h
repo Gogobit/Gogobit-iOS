@@ -9,16 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GogobitHttpProtocol.h"
 
-@interface ExchangeRateViewController : UIViewController <GogobitHttpProtocol, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface ExchangeRateViewController : UIViewController <GogobitHttpProtocol>
 
-@property (weak, nonatomic) IBOutlet UILabel *mainRateLabel;
-@property (weak, nonatomic) IBOutlet UIPickerView *currencyPickerView;
-@property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (strong, nonatomic) NSMutableArray *exchangeNameList;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *fiatCurrencyTypeButton;
-@property (weak, nonatomic) IBOutlet UITextField *usdInputField;
-@property (weak, nonatomic) IBOutlet UITextField *btcInputField;
 @property (strong, nonatomic) UIFont *thinFont;
 @property (nonatomic) double rate;
 
@@ -36,7 +31,5 @@
 - (IBAction)pressDigit:(UIButton *)sender;
 - (IBAction)pressDelete:(UIButton *)sender;
 - (IBAction)pressPoint:(UIButton *)sender;
-
-- (IBAction)backgroundTap:(id)sender;
 
 @end

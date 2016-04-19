@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.settingsTableView.backgroundColor = [UIColor clearColor];
     self.settingsArray = [[NSMutableArray alloc] initWithArray:@[@"關於", @"幣別", @"回饋意見"]];
     self.settingsDetailArray = [[NSMutableArray alloc] initWithArray:@[@"", @"", @""]];
@@ -54,17 +53,11 @@
         }
         [self.tableView reloadData];
     }
-//    self.someProperty = [self.someArray objectAtIndex:indexPath.row];
-//    [self performSegueWithIdentifier:@"segueID" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Feedback" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return @"Settings";
-//}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"SettingsCellIdentifier";

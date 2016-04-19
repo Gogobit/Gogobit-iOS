@@ -24,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAveragePrice)
                                                  name:@"NowCanGetAveragePrice"
@@ -34,7 +33,6 @@
                                                  name:@"DidGetUsdTwdRate"
                                                object:nil];
     self.currencyTableView.dataSource = self;
-//    self.currencyTableView.rowHeight = UITableViewAutomaticDimension;
     self.currencyTableView.rowHeight = 60;
     self.priceFlagArray = [[NSMutableArray alloc] initWithArray:@[@0, @0, @0, @0, @0, @0]];
     self.exchangeNameList = [[NSMutableArray alloc] initWithArray:@[@"Coinbase", @"Bitstamp", @"Maicoin", @"OKCoin", @"Bitfinex", @"Bitoex"]];
@@ -42,11 +40,10 @@
     self.exchangeImagePathList = [[NSMutableArray alloc] initWithArray:@[@"CoinbaseLogo", @"BitstampLogo", @"MaicoinLogo", @"OkcoinLogo", @"BitfinexLogo", @"BitoexLogo"]];
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.tintColor = [UIColor whiteColor];
-    self.currencyTableView.backgroundColor = [UIColor clearColor];
-//    refreshControl.backgroundColor = [UIColor grayColor];
     [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.currencyTableView addSubview:refreshControl];
     [self.currencyTableView sendSubviewToBack:refreshControl];
+    self.currencyTableView.backgroundColor = [UIColor clearColor];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
 }
@@ -75,7 +72,6 @@
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"DidGetUsdTwdRate"
          object:self];
-//        NSLog(responseObject[@"query"][@"results"][@"rate"][@"Rate"]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error!");
     }];
@@ -96,11 +92,11 @@
 
 - (void)getAllExchangesCurrency {
     [self getTodayPrice];
-    [self getCoinbasePrice];
-    [self getbitstampPrice];
-    [self getMaicoinPrice];
-    [self getOkcoinPrice];
-    [self getBitfinexPrice];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Coinbase andSender:self];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Bitstamp andSender:self];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Maicoin andSender:self];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Okcoin andSender:self];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Bitfinex andSender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -141,6 +137,42 @@
     }];
     // Set the reachabilityManager to actively wait for these events
     [manager.reachabilityManager startMonitoring];
+
+}
+
+- (void)boardDidGetExchangePriceWithName:(NSInteger)name andData:(id)data {
+    float twdAveragePrice;
+    switch (name) {
+        case Coinbase:
+            [self.currencyList replaceObjectAtIndex:name withObject:data[@"data"][@"amount"]];
+            break;
+        case Bitstamp:
+            [self.currencyList replaceObjectAtIndex:name withObject:data[@"last"]];
+            break;
+        case Maicoin:
+            [self.currencyList replaceObjectAtIndex:name withObject:[self unifyPriceFormat:data[@"price"]]];
+            break;
+        case Okcoin:
+            [self.currencyList replaceObjectAtIndex:name withObject:data[@"ticker"][@"last"]];
+            break;
+        case Bitfinex:
+            [self.currencyList replaceObjectAtIndex:name withObject:data[@"last_price"]];
+            break;
+        case Bitoex:
+            twdAveragePrice = ([data[@"buy"] floatValue] + [data[@"sell"] floatValue]) / 2;
+            [self.currencyList replaceObjectAtIndex:name withObject:[NSString stringWithFormat:@"%f", twdAveragePrice / [self.usdToTwdCurrenyString floatValue]]];
+            break;
+        default:
+            break;
+    }
+    self.priceFlagArray[name] = @1;
+    [self.currencyTableView reloadData];
+    [self checkGetAllPricesCompleted];
+}
+
+- (void)boardGetExchangePriceDidFailWithCode:(NSInteger)code name:(NSInteger)name andResponse:(NSString *)errorResponse {
+    NSLog(@"protocol client fail code: %ld , name: %ld", (long)code, (long)name);
+    NSLog(@"error!");
 }
 
 - (void)handleRefresh:(UIRefreshControl *)refreshControl {
@@ -159,7 +191,6 @@
     static NSString *CellIdentifier = @"CellIdentifier";
     float todayPrice = [[[NSUserDefaults standardUserDefaults] objectForKey:@"TodayPriceNumber"] floatValue];
     float rate = (([self.currencyList[indexPath.row] floatValue] - todayPrice) / todayPrice) * 100;
-//    [tableView registerNib:[UINib nibWithNibName:@"ExchangeTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     ExchangeTableViewCell *cell = (ExchangeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeTableViewCell" owner:self options:nil] objectAtIndex:0];
@@ -190,17 +221,8 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 60;
-//}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.currencyList.count;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)getTodayPrice {
@@ -211,100 +233,22 @@
         NSNumber *todayPriceNumber = [NSNumber numberWithFloat:todayPrice];
         [[NSUserDefaults standardUserDefaults] setObject:todayPriceNumber forKey:@"TodayPriceNumber"];
         [self.currencyTableView reloadData];
-//        self.priceFlagArray[0] = @1;
-//        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
-}
-
-- (void)getCoinbasePrice {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:COINBASE_USD_PRICE_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.currencyList replaceObjectAtIndex:0 withObject:responseObject[@"data"][@"amount"]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[0] = @1;
-        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
-}
-
-- (void)getbitstampPrice {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.bitstamp.net/api/ticker/"]]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.currencyList replaceObjectAtIndex:1 withObject:responseObject[@"last"]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[1] = @1;
-        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
-    [operation start];
-}
-- (void)getMaicoinPrice {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.maicoin.com/v1/prices/usd"]]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.currencyList replaceObjectAtIndex:2 withObject:[self unifyPriceFormat:responseObject[@"price"]]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[2] = @1;
-        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
-    [operation start];
-}
-
-- (void)getOkcoinPrice {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:OKCOIN_USD_PRICE_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.currencyList replaceObjectAtIndex:3 withObject:responseObject[@"ticker"][@"last"]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[3] = @1;
-        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
-}
-
-- (void)getBitfinexPrice {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:BITFINEX_USD_PRICE_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.currencyList replaceObjectAtIndex:4 withObject:responseObject[@"last_price"]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[4] = @1;
-        [self checkGetAllPricesCompleted];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error!");
     }];
 }
 
 - (void)getBitoexPrice {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:BITOEX_USD_PRICE_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        float twdAveragePrice = ([responseObject[@"buy"] floatValue] + [responseObject[@"sell"] floatValue]) / 2;
-        [self.currencyList replaceObjectAtIndex:5 withObject:[NSString stringWithFormat:@"%f", twdAveragePrice / [self.usdToTwdCurrenyString floatValue]]];
-        [self.currencyTableView reloadData];
-        self.priceFlagArray[5] = @1;
-        [self checkGetAllPricesCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error!");
-    }];
+    [[GogobitHttpClient sharedClient] getExchangePriceWithName:Bitoex andSender:self];
 }
 
 - (NSString *)unifyPriceFormat:(NSString *)priceString {
     return [NSString stringWithFormat:@"%.2f", [priceString floatValue]];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

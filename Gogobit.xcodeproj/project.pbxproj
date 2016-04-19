@@ -25,8 +25,8 @@
 		1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */; };
 		1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */; };
 		107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C99EE1C8E894300C79A3D /* AboutViewController.m */; };
+		109B68711CC5DBCD0087973D /* GogobitHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109B68701CC5DBCD0087973D /* GogobitHttpClient.m */; };
 		10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */; };
-		10E759731BEE581500BB78FA /* ExchangesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E759721BEE581500BB78FA /* ExchangesClient.m */; };
 		234B18BA51FA8AFCCBEAE58D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19126C418D876DD229041C85 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,10 +82,10 @@
 		1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeTableViewCell.m; path = ExchangeTableViewCell/ExchangeTableViewCell.m; sourceTree = "<group>"; };
 		107C99ED1C8E894300C79A3D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		107C99EE1C8E894300C79A3D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		109B686F1CC5DBCD0087973D /* GogobitHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpClient.h; sourceTree = "<group>"; };
+		109B68701CC5DBCD0087973D /* GogobitHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GogobitHttpClient.m; sourceTree = "<group>"; };
 		10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRateViewController.h; sourceTree = "<group>"; };
 		10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRateViewController.m; sourceTree = "<group>"; };
-		10E759711BEE581500BB78FA /* ExchangesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangesClient.h; sourceTree = "<group>"; };
-		10E759721BEE581500BB78FA /* ExchangesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangesClient.m; sourceTree = "<group>"; };
 		10E759741BEE59E800BB78FA /* GogobitHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpProtocol.h; sourceTree = "<group>"; };
 		19126C418D876DD229041C85 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECDDF78059F1E82C240C7A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 				10026FCA1BEBB58C00F229F0 /* GogobitTabBarController.h */,
 				10026FCB1BEBB58C00F229F0 /* GogobitTabBarController.m */,
 				10E759741BEE59E800BB78FA /* GogobitHttpProtocol.h */,
-				10E759711BEE581500BB78FA /* ExchangesClient.h */,
-				10E759721BEE581500BB78FA /* ExchangesClient.m */,
+				109B686F1CC5DBCD0087973D /* GogobitHttpClient.h */,
+				109B68701CC5DBCD0087973D /* GogobitHttpClient.m */,
 				100D0AA81C8B22F000381929 /* Assets.xcassets */,
 				1046DF721BE7C7D700139757 /* Main.storyboard */,
 				103DF9311C945F6400C7C651 /* Launch Screen.storyboard */,
@@ -438,9 +438,9 @@
 				100D0AAF1C8BA83D00381929 /* FeedbackWebViewController.m in Sources */,
 				10104FDC1CBA8BEA005BAB5D /* ArticleCollectionViewCell.m in Sources */,
 				100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */,
-				10E759731BEE581500BB78FA /* ExchangesClient.m in Sources */,
 				107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */,
 				1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */,
+				109B68711CC5DBCD0087973D /* GogobitHttpClient.m in Sources */,
 				10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */,
 				10026FCC1BEBB58C00F229F0 /* GogobitTabBarController.m in Sources */,
 			);
@@ -577,9 +577,50 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Gogobit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AFNetworking\"",
+					"-l\"AFNetworking+AutoRetry\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"ObjcAssociatedObjectHelpers\"",
+					"-l\"YYCache\"",
+					"-l\"YYCategories\"",
+					"-l\"YYImage\"",
+					"-l\"YYWebImage\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.gogobit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -594,9 +635,50 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Gogobit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AFNetworking\"",
+					"-l\"AFNetworking+AutoRetry\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"ObjcAssociatedObjectHelpers\"",
+					"-l\"YYCache\"",
+					"-l\"YYCategories\"",
+					"-l\"YYImage\"",
+					"-l\"YYWebImage\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.gogobit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

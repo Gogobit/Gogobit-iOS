@@ -287,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T69-aa-DRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="544"/>
+            <point key="canvasLocation" x="1445" y="1859"/>
         </scene>
         <!--設定-->
         <scene sceneID="AMn-ew-QVA">
@@ -369,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIB-A3-kw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1131" y="1787"/>
+            <point key="canvasLocation" x="2245" y="1859"/>
         </scene>
         <!--Feedback Web View Controller-->
         <scene sceneID="UZI-ow-0fc">
@@ -412,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOe-1u-pOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1879" y="1787"/>
+            <point key="canvasLocation" x="3118" y="2751"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="d2W-OI-hl6">
@@ -502,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBI-hR-rwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="2531"/>
+            <point key="canvasLocation" x="2390" y="2751"/>
         </scene>
         <!--文章列表-->
         <scene sceneID="UJ1-bm-Mrz">
@@ -525,6 +525,23 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="8rj-8Y-XWg" userLabel="failView">
+                                    <rect key="frame" x="0.0" y="-64" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前沒有網路連線，請稍後再試。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cG-R2-6Yl">
+                                            <rect key="frame" x="173" y="290" width="255" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="0.80103058510000003" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="9cG-R2-6Yl" firstAttribute="centerY" secondItem="8rj-8Y-XWg" secondAttribute="centerY" id="Yki-Ng-5Bx"/>
+                                        <constraint firstItem="9cG-R2-6Yl" firstAttribute="centerX" secondItem="8rj-8Y-XWg" secondAttribute="centerX" id="acY-q8-AJn"/>
+                                    </constraints>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCollectionViewCellIdentifier" id="5Ii-XT-IbE" customClass="ArticleCollectionViewCell">
                                         <rect key="frame" x="113" y="64" width="375" height="250"/>
@@ -537,7 +554,7 @@
                                                 </imageView>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNs-xT-NhY">
                                                     <rect key="frame" x="-1" y="0.0" width="376" height="250"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.36358599289999999" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.47048254462413786" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aoc-TV-mf5">
                                                     <rect key="frame" x="37" y="121" width="300" height="69"/>
@@ -611,11 +628,13 @@
                     <navigationItem key="navigationItem" title="文章列表" id="Tk0-p5-xO8"/>
                     <connections>
                         <outlet property="collectionView" destination="j2M-AE-X3q" id="YND-GK-LQE"/>
+                        <outlet property="failMessageLabel" destination="9cG-R2-6Yl" id="9df-ij-SeL"/>
+                        <outlet property="failView" destination="8rj-8Y-XWg" id="yBG-n4-afN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ti7-SV-Rop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="-836"/>
+            <point key="canvasLocation" x="-1024" y="1859"/>
         </scene>
         <!--精選文章-->
         <scene sceneID="oRL-AB-LK6">
@@ -649,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tf-nS-Ohn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="-836"/>
+            <point key="canvasLocation" x="-1024" y="2596"/>
         </scene>
         <!--市場-->
         <scene sceneID="tzJ-79-Nt8">
@@ -818,7 +837,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnY-nI-HuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="-117"/>
+            <point key="canvasLocation" x="617" y="1859"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Imh-3R-JVQ">
@@ -853,14 +872,14 @@
                     </tabBar>
                     <connections>
                         <segue destination="DZ1-Gb-0zH" kind="relationship" relationship="viewControllers" id="sIE-J9-bWv"/>
-                        <segue destination="UMD-kh-GOh" kind="relationship" relationship="viewControllers" id="vok-QS-363"/>
                         <segue destination="gTx-lx-a6k" kind="relationship" relationship="viewControllers" id="9O9-Qg-2RP"/>
+                        <segue destination="UMD-kh-GOh" kind="relationship" relationship="viewControllers" id="vok-QS-363"/>
                         <segue destination="y2z-nf-pH8" kind="relationship" relationship="viewControllers" id="krZ-Rc-Vek"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvP-OK-CFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="122"/>
+            <point key="canvasLocation" x="337" y="418"/>
         </scene>
     </scenes>
     <resources>

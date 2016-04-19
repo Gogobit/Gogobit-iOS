@@ -17,7 +17,9 @@ NSString *const GOGOBIT_POSTS_API = @"http://www.gogobit.com/api/v0/app/posts";
 @interface ArticlesFlowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *failView;
 @property (strong, nonatomic) NSArray *postsArray;
 @property (nonatomic, weak) MBProgressHUD *hud;
+@property (weak, nonatomic) IBOutlet UILabel *failMessageLabel;
 
 @end

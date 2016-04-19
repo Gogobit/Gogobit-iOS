@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYWebImage/YYWebImage.h>
 
 @interface ArticleCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet YYAnimatedImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
 @property (weak, nonatomic) IBOutlet UIView *filterView;

@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[self navigationController] setNavigationBarHidden:NO animated:YES];
     self.navigationItem.title = @"回饋意見";
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://wilsonhuang.typeform.com/to/FK0qpl"]];
     self.feedbackWebView.delegate = self;
@@ -33,15 +32,6 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.hud hide:YES];
 }
-
-//- (void)viewWillAppear:(BOOL)animated {
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStyleBordered target:self action:@selector(Back)];
-//    self.navigationItem.leftBarButtonItem = backButton;
-//}
-//
-//- (void)Back {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

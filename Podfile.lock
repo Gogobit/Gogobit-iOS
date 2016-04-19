@@ -30,16 +30,32 @@ PODS:
   - ObjcAssociatedObjectHelpers/Core (2.0.1)
   - ObjcAssociatedObjectHelpers/NSObject+Dictionary (2.0.1):
     - ObjcAssociatedObjectHelpers/Core
+  - YYCache (1.0.3)
+  - YYCategories (1.0.2):
+    - YYCategories/no-arc (= 1.0.2)
+  - YYCategories/no-arc (1.0.2)
+  - YYImage (1.0.1):
+    - YYImage/Core (= 1.0.1)
+  - YYImage/Core (1.0.1)
+  - YYWebImage (1.0.3):
+    - YYCache
+    - YYImage
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5)
-  - AFNetworking+AutoRetry (= 0.0.5)
+  - AFNetworking (~> 2.0)
+  - AFNetworking+AutoRetry
   - MBProgressHUD (~> 0.9.1)
+  - YYCategories
+  - YYWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
   AFNetworking+AutoRetry: 5987ec96155e58fe356f1a3e91e79e5f3be6296a
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ObjcAssociatedObjectHelpers: 686c291f292c26a49b9b1fa7d58130a8d35d59d2
+  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+  YYCategories: 7319e4ba4f4d4dbcec0094abaab540e98f04a65f
+  YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
+  YYWebImage: 8da75a611fd0d2e0f58a273f9ca0bc731614cb0d
 
 COCOAPODS: 0.39.0
