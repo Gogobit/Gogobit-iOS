@@ -18,7 +18,6 @@ NSString const *DONATED_ADDRESS = @"1AF27uJui6ucj4hht1AToCmn16Ls5Y1KeX";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[self navigationController] setNavigationBarHidden:NO animated:YES];
     self.navigationItem.title = @"關於";
     self.qrCodeImageView.image = [self createQRForString:[NSString stringWithFormat:@"bitcoin:%@", DONATED_ADDRESS]];
 

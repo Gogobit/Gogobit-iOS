@@ -22,5 +22,6 @@ typedef NS_ENUM(NSInteger, ExchangeCode) {
 
 + (instancetype)sharedClient;
 - (NSURLSessionDataTask *)getExchangePriceWithName:(NSInteger)code andSender:(id<GogobitHttpProtocol>)sender;
+- (void)checkNetworkReachableWithSender:(id<GogobitHttpProtocol>)sender;
 
 @end

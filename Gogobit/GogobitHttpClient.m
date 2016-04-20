@@ -64,6 +64,16 @@ NSString *const BITOEX_TWD_PRICE_API = @"https://www.bitoex.com/api/v1/get_rate"
     }];
 }
 
+- (void)checkNetworkReachableWithSender:(id<GogobitHttpProtocol>)sender {
+    [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if ([sender respondsToSelector:@selector(appCheckNetworkDidFailWithStatus:)]) {
+            [sender appCheckNetworkDidFailWithStatus:status];
+        }
+    }];
+    [self.reachabilityManager startMonitoring];
+}
+
+
 - (NSString *)getUrlWithName:(NSInteger)name {
     NSString *url = [[NSString alloc] init];
     switch (name) {

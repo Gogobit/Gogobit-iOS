@@ -24,7 +24,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.navigationController.navigationBar.topItem.title = @"設定";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
