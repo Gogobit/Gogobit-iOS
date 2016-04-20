@@ -24,7 +24,6 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-//    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
 }
 

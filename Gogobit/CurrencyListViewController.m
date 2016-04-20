@@ -102,43 +102,38 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"交易所";
+        [self getUsdToTwdCurrency];
+    for (int i = 0; i < [self.priceFlagArray count]; i++) {
+        [self.priceFlagArray replaceObjectAtIndex:i withObject:@0];
+    }
+    [self getAllExchangesCurrency];
+    [[GogobitHttpClient sharedClient] checkNetworkReachableWithSender:self];
+}
+
+- (void)appCheckNetworkDidFailWithStatus:(NSUInteger)status {
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:NSLocalizedString(@"錯誤", @"")
                                 message:NSLocalizedString(@"您目前沒有網路連接，請檢查後再試。", @"")
                                 preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:NSLocalizedString(@"我知道了", @"")
-                                                    style:UIAlertActionStyleDefault
-                                                  handler:nil];
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:nil];
     [alert addAction:confirm];
-    [self getUsdToTwdCurrency];
-    for (int i = 0; i < [self.priceFlagArray count]; i++) {
-        [self.priceFlagArray replaceObjectAtIndex:i withObject:@0];
+    switch (status) {
+        case AFNetworkReachabilityStatusUnknown:
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+            break;
+        case AFNetworkReachabilityStatusNotReachable:
+            NSLog(@"no connection!");
+            [self.hud hide:YES];
+            [self presentViewController:alert animated:YES completion:nil];
+            break;
+        default:
+            break;
     }
-    [self getAllExchangesCurrency];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-        switch (status) {
-            case AFNetworkReachabilityStatusUnknown:
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-                // Our connection is fine
-                // Resume our requests or do nothing
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"no connection!");
-                [self.hud hide:YES];
-                [self presentViewController:alert animated:YES completion:nil];
-                // We have no active connection - disable all requests and don’t let the user do anything
-                break;
-            default:
-                // If we get here, we’re most likely timing out
-                break;
-        }
-    }];
-    // Set the reachabilityManager to actively wait for these events
-    [manager.reachabilityManager startMonitoring];
-
 }
+
 
 - (void)boardDidGetExchangePriceWithName:(NSInteger)name andData:(id)data {
     float twdAveragePrice;

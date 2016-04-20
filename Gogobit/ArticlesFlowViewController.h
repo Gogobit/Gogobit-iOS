@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ArticleCollectionViewCell.h"
 #import "ArticleWebViewController.h"
+#import "GogobitHttpClient.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
 
 NSString *const GOGOBIT_POSTS_API = @"http://www.gogobit.com/api/v0/app/posts";
 
-@interface ArticlesFlowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ArticlesFlowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, GogobitHttpProtocol>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *failView;

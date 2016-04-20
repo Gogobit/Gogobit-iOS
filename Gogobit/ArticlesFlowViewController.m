@@ -28,49 +28,48 @@
     [self.collectionView addSubview:refreshControl];
     [self.collectionView sendSubviewToBack:refreshControl];
     [self scrollViewDidScroll:self.collectionView];
-    [self getPosts];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"文章列表";
-//    [self getPosts];
-    self.failView.hidden = YES;
-    self.failMessageLabel.hidden = YES;
-//    [self.collectionView reloadData];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-        switch (status) {
-            case AFNetworkReachabilityStatusUnknown:
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-                // Our connection is fine
-                // Resume our requests or do nothing
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"no connection!");
-                [self.hud hide:YES];
-                self.failView.hidden = NO;
-                self.failMessageLabel.hidden = NO;
-                // We have no active connection - disable all requests and don’t let the user do anything
-                break;
-            default:
-                // If we get here, we’re most likely timing out
-                [self.hud hide:YES];
-                self.failView.hidden = NO;
-                self.failMessageLabel.hidden = NO;
-                break;
-        }
-    }];
-    // Set the reachabilityManager to actively wait for these events
-    [manager.reachabilityManager startMonitoring];
+    [[GogobitHttpClient sharedClient] checkNetworkReachableWithSender:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)appCheckNetworkDidFailWithStatus:(NSUInteger)status {
+    switch (status) {
+        case AFNetworkReachabilityStatusNotReachable:
+            self.failView.hidden = NO;
+            self.failMessageLabel.hidden = NO;
+            NSLog(@"No Internet Conexion");
+            break;
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            [self getPosts];
+            self.failView.hidden = YES;
+            self.failMessageLabel.hidden = YES;
+            NSLog(@"WIFI");
+            break;
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+            [self getPosts];
+            self.failView.hidden = YES;
+            self.failMessageLabel.hidden = YES;
+            NSLog(@"WWAN");
+            break;
+        case AFNetworkReachabilityStatusUnknown:
+            self.failView.hidden = NO;
+            self.failMessageLabel.hidden = NO;
+            break;
+        default:
+            self.failView.hidden = NO;
+            self.failMessageLabel.hidden = NO;
+            NSLog(@"Unkown network status");
+            break;
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -167,6 +166,12 @@
         [self.hud hide:YES];
         NSLog(@"error!");
     }];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [touches anyObject];
+    NSLog(@"touch!!");
+//    originalLocation = [touch locationInView:self.view];
 }
 
 /*
