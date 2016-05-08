@@ -15,6 +15,21 @@
     // Initialization code
 }
 
+-(void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [self setNeedsDisplay];
+}
+
+-(void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+
+    if (self.highlighted) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetRGBFillColor(context, 0, 0, 0, 0);
+        CGContextFillRect(context, self.bounds);
+    }
+}
+
 - (void)performSelectionAnimations {
     self.filterView.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.5];
 }

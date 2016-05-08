@@ -19,9 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, [[UIScreen mainScreen] bounds].size.width, 20)];
-    statusBarView.backgroundColor = [UIColor colorWithRed:26/255.0f green:26/255.0f blue:26/255.0f alpha:0.9f];
-    [self.navigationController.navigationBar addSubview:statusBarView];
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.tintColor = [UIColor whiteColor];
     [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -32,8 +29,27 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.topItem.title = @"文章列表";
+    self.navigationController.navigationBar.topItem.title = @"文章";
+
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [button setTitleColor:[UIColor colorWithHexString:@"#FF8B10"] forState:UIControlStateNormal];
+    [button setTitle:@"來源" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(toChooseArticleSource) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 36, 36)];
+    UIBarButtonItem *sourceButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.tabBarController.navigationItem.rightBarButtonItem = sourceButton;
+
     [[GogobitHttpClient sharedClient] checkNetworkReachableWithSender:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void)toChooseArticleSource {
+    [self performSegueWithIdentifier:@"ToNewsSourcesViewSegue" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,30 +59,20 @@
 
 - (void)appCheckNetworkDidFailWithStatus:(NSUInteger)status {
     switch (status) {
-        case AFNetworkReachabilityStatusNotReachable:
-            self.failView.hidden = NO;
-            self.failMessageLabel.hidden = NO;
-            NSLog(@"No Internet Conexion");
-            break;
         case AFNetworkReachabilityStatusReachableViaWiFi:
-            [self getPosts];
-            self.failView.hidden = YES;
-            self.failMessageLabel.hidden = YES;
-            NSLog(@"WIFI");
-            break;
         case AFNetworkReachabilityStatusReachableViaWWAN:
             [self getPosts];
             self.failView.hidden = YES;
             self.failMessageLabel.hidden = YES;
-            NSLog(@"WWAN");
+            [self.hud hide:YES];
             break;
+        case AFNetworkReachabilityStatusNotReachable:
         case AFNetworkReachabilityStatusUnknown:
-            self.failView.hidden = NO;
-            self.failMessageLabel.hidden = NO;
-            break;
         default:
             self.failView.hidden = NO;
             self.failMessageLabel.hidden = NO;
+            self.failMessageLabel.text = @"您目前沒有網路連線，請檢查後再試。";
+            [self.hud hide:YES];
             NSLog(@"Unkown network status");
             break;
     }
@@ -90,8 +96,8 @@
 
 - (void)handleRefresh:(UIRefreshControl *)refreshControl {
     if (self.postsArray.count > 0) {
-        self.failView.hidden = YES;
-        self.failMessageLabel.hidden = YES;
+//        self.failView.hidden = YES;
+//        self.failMessageLabel.hidden = YES;
     }
     [self getPosts];
     [refreshControl endRefreshing];
@@ -106,6 +112,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSString *urlString = [self.postsArray[indexPath.row][@"imgUrl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:self.postsArray[indexPath.row][@"imgUrl"]];
     ArticleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ArticleCollectionViewCellIdentifier" forIndexPath:indexPath];
     cell.titleLabel.text = self.postsArray[indexPath.row][@"title"];
@@ -118,11 +125,8 @@
                                options:YYWebImageOptionSetImageWithFadeAnimation
                             progress:nil
                              transform:nil
-                            completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-                                if (from == YYWebImageFromDiskCache) {
-                                    NSLog(@"load from disk cache");
-                                }
-                            }];
+                            completion:nil];
+    [self.hud hide:YES];
     return cell;
 }
 
@@ -130,6 +134,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ArticleWebViewController *awvc = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleWebViewControllerIdentifier"];
     awvc.articleUrl = [self.postsArray objectAtIndex:indexPath.row][@"url"];
+    awvc.count = 0;
     [self.navigationController pushViewController:awvc animated:YES];
 }
 
@@ -152,26 +157,35 @@
 }
 
 - (void)getPosts {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:GOGOBIT_POSTS_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.failView.hidden = YES;
-        self.failMessageLabel.hidden = YES;
-        self.postsArray = [NSArray arrayWithArray:responseObject];
-        [self.hud hide:YES];
-        [self.collectionView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.hud hide:YES];
-        NSLog(@"error!");
-    }];
+    [[GogobitHttpClient sharedClient] getPostsWithSender:self];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    UITouch *touch = [touches anyObject];
-    NSLog(@"touch!!");
-//    originalLocation = [touch locationInView:self.view];
+- (void)flowDidGetPostsWithData:(id)data {
+//    self.failView.hidden = YES;
+//    self.failMessageLabel.hidden = YES;
+    self.postsArray = [NSArray arrayWithArray:data];
+    [self.hud hide:YES];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"sourceQueryCode"] integerValue] == 0 || self.postsArray.count == 0) {
+        self.failView.hidden = NO;
+        self.failMessageLabel.hidden = NO;
+        self.failMessageLabel.text = @"目前沒有文章來源，可以在右上角或到設定去選取喔！";
+    }
+    else {
+        self.failView.hidden = YES;
+        self.failMessageLabel.hidden = YES;
+    }
+    [self.collectionView reloadData];
+}
+
+- (void)flowGetPostsDidFailWithCode:(NSInteger)code andResponse:(NSString *)errorResponse {
+    [self.hud hide:YES];
+    self.failView.hidden = NO;
+    self.failMessageLabel.hidden = NO;
+    self.failMessageLabel.text = @"伺服器維護中，請稍後再試。";
+    NSLog(@"flowGetPostsDidFailWithCode code: %ld", (long)code);
+    NSLog(@"errorResponse: %@", errorResponse);
 }
 
 /*

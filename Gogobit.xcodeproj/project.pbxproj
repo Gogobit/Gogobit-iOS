@@ -15,6 +15,7 @@
 		10104FDC1CBA8BEA005BAB5D /* ArticleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10104FDA1CBA8BEA005BAB5D /* ArticleCollectionViewCell.m */; };
 		10104FDD1CBA8BEA005BAB5D /* ArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10104FDB1CBA8BEA005BAB5D /* ArticleCollectionViewCell.xib */; };
 		10104FE51CBB4AFA005BAB5D /* ArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10104FE41CBB4AFA005BAB5D /* ArticleWebViewController.m */; };
+		103633AE1CDC63BE00B8BACD /* BrokerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103633AD1CDC63BE00B8BACD /* BrokerDetailViewController.m */; };
 		103DF9321C945F6400C7C651 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 103DF9311C945F6400C7C651 /* Launch Screen.storyboard */; };
 		1046DF6B1BE7C7D700139757 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6A1BE7C7D700139757 /* main.m */; };
 		1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF6D1BE7C7D700139757 /* AppDelegate.m */; };
@@ -24,9 +25,14 @@
 		1046DF8F1BE7C7D800139757 /* GogobitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046DF8E1BE7C7D800139757 /* GogobitUITests.m */; };
 		1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */; };
 		1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */; };
+		1051CFAB1CCB53050074370E /* launchView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1051CFAA1CCB53050074370E /* launchView.png */; };
 		107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C99EE1C8E894300C79A3D /* AboutViewController.m */; };
 		109B68711CC5DBCD0087973D /* GogobitHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109B68701CC5DBCD0087973D /* GogobitHttpClient.m */; };
+		10CB8DD91CDEE9E100373EBB /* FanpageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8DD81CDEE9E100373EBB /* FanpageViewController.m */; };
 		10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */; };
+		10F751901CD8388F0098337C /* NewsSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F7518F1CD8388F0098337C /* NewsSourcesViewController.m */; };
+		10F751941CD840F50098337C /* SourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F751921CD840F50098337C /* SourceCollectionViewCell.m */; };
+		10F751951CD840F50098337C /* SourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F751931CD840F50098337C /* SourceCollectionViewCell.xib */; };
 		234B18BA51FA8AFCCBEAE58D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19126C418D876DD229041C85 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +68,8 @@
 		10104FDB1CBA8BEA005BAB5D /* ArticleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCollectionViewCell.xib; sourceTree = "<group>"; };
 		10104FE31CBB4AFA005BAB5D /* ArticleWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWebViewController.h; sourceTree = "<group>"; };
 		10104FE41CBB4AFA005BAB5D /* ArticleWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWebViewController.m; sourceTree = "<group>"; };
+		103633AC1CDC63BE00B8BACD /* BrokerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokerDetailViewController.h; sourceTree = "<group>"; };
+		103633AD1CDC63BE00B8BACD /* BrokerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokerDetailViewController.m; sourceTree = "<group>"; };
 		103DF9311C945F6400C7C651 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1046DF661BE7C7D700139757 /* Gogobit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gogobit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1046DF6A1BE7C7D700139757 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,13 +88,21 @@
 		1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeTableViewCell.xib; sourceTree = "<group>"; };
 		1046F8AA1C80A27C00C48198 /* ExchangeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeTableViewCell.h; path = ExchangeTableViewCell/ExchangeTableViewCell.h; sourceTree = "<group>"; };
 		1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeTableViewCell.m; path = ExchangeTableViewCell/ExchangeTableViewCell.m; sourceTree = "<group>"; };
+		1051CFAA1CCB53050074370E /* launchView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchView.png; sourceTree = "<group>"; };
 		107C99ED1C8E894300C79A3D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		107C99EE1C8E894300C79A3D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		109B686F1CC5DBCD0087973D /* GogobitHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpClient.h; sourceTree = "<group>"; };
 		109B68701CC5DBCD0087973D /* GogobitHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GogobitHttpClient.m; sourceTree = "<group>"; };
+		10CB8DD71CDEE9E100373EBB /* FanpageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanpageViewController.h; sourceTree = "<group>"; };
+		10CB8DD81CDEE9E100373EBB /* FanpageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanpageViewController.m; sourceTree = "<group>"; };
 		10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRateViewController.h; sourceTree = "<group>"; };
 		10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRateViewController.m; sourceTree = "<group>"; };
 		10E759741BEE59E800BB78FA /* GogobitHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpProtocol.h; sourceTree = "<group>"; };
+		10F7518E1CD8388F0098337C /* NewsSourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSourcesViewController.h; sourceTree = "<group>"; };
+		10F7518F1CD8388F0098337C /* NewsSourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSourcesViewController.m; sourceTree = "<group>"; };
+		10F751911CD840F50098337C /* SourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCollectionViewCell.h; sourceTree = "<group>"; };
+		10F751921CD840F50098337C /* SourceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCollectionViewCell.m; sourceTree = "<group>"; };
+		10F751931CD840F50098337C /* SourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		19126C418D876DD229041C85 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECDDF78059F1E82C240C7A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		69AC3125523CCE6270DC48A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +186,9 @@
 				1046F8A91C80A22900C48198 /* ExchangeTableViewCell */,
 				1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */,
 				1046DF701BE7C7D700139757 /* CurrencyListViewController.m */,
+				103633AC1CDC63BE00B8BACD /* BrokerDetailViewController.h */,
+				103633AD1CDC63BE00B8BACD /* BrokerDetailViewController.m */,
+				10F751961CD840FF0098337C /* Source */,
 				10104FE21CBAA654005BAB5D /* Article */,
 				10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */,
 				10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */,
@@ -177,6 +196,8 @@
 				100D0AAB1C8B29AA00381929 /* SettingsViewController.m */,
 				100D0AAD1C8BA83D00381929 /* FeedbackWebViewController.h */,
 				100D0AAE1C8BA83D00381929 /* FeedbackWebViewController.m */,
+				10CB8DD71CDEE9E100373EBB /* FanpageViewController.h */,
+				10CB8DD81CDEE9E100373EBB /* FanpageViewController.m */,
 				107C99ED1C8E894300C79A3D /* AboutViewController.h */,
 				107C99EE1C8E894300C79A3D /* AboutViewController.m */,
 				10026FCA1BEBB58C00F229F0 /* GogobitTabBarController.h */,
@@ -196,6 +217,7 @@
 		1046DF691BE7C7D700139757 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1051CFAA1CCB53050074370E /* launchView.png */,
 				1046DF6A1BE7C7D700139757 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -229,6 +251,18 @@
 			name = ExchangeTableViewCell;
 			sourceTree = "<group>";
 		};
+		10F751961CD840FF0098337C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				10F7518E1CD8388F0098337C /* NewsSourcesViewController.h */,
+				10F7518F1CD8388F0098337C /* NewsSourcesViewController.m */,
+				10F751911CD840F50098337C /* SourceCollectionViewCell.h */,
+				10F751921CD840F50098337C /* SourceCollectionViewCell.m */,
+				10F751931CD840F50098337C /* SourceCollectionViewCell.xib */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		55F5EC85A330B61FD8534F42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +293,7 @@
 				1046DF641BE7C7D700139757 /* Resources */,
 				95FBD48D3D5208DD6ADC0AEB /* Embed Pods Frameworks */,
 				EC2FD0C5E06C8FF8C87A0575 /* Copy Pods Resources */,
+				105799591CCA328200DC67B0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -354,10 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */,
+				1051CFAB1CCB53050074370E /* launchView.png in Resources */,
 				100D0AA91C8B22F000381929 /* Assets.xcassets in Resources */,
 				10104FDD1CBA8BEA005BAB5D /* ArticleCollectionViewCell.xib in Resources */,
 				103DF9321C945F6400C7C651 /* Launch Screen.storyboard in Resources */,
 				1046DF741BE7C7D700139757 /* Main.storyboard in Resources */,
+				10F751951CD840F50098337C /* SourceCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +415,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		105799591CCA328200DC67B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 94c477b824eb171e7714a4fd1163498cd3093d52 95653522c19c09adba848785251c77fb3fcd95d8de9742cf9651075b9bd06209";
+		};
 		6D23BC95DE1CD4F33B4A81CF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		EC2FD0C5E06C8FF8C87A0575 /* Copy Pods Resources */ = {
@@ -432,6 +482,7 @@
 			files = (
 				1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */,
 				10104FCE1CB7D5C1005BAB5D /* ArticlesFlowViewController.m in Sources */,
+				10F751941CD840F50098337C /* SourceCollectionViewCell.m in Sources */,
 				10104FE51CBB4AFA005BAB5D /* ArticleWebViewController.m in Sources */,
 				1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */,
 				1046DF6B1BE7C7D700139757 /* main.m in Sources */,
@@ -440,8 +491,11 @@
 				100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */,
 				107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */,
 				1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */,
+				10CB8DD91CDEE9E100373EBB /* FanpageViewController.m in Sources */,
+				10F751901CD8388F0098337C /* NewsSourcesViewController.m in Sources */,
 				109B68711CC5DBCD0087973D /* GogobitHttpClient.m in Sources */,
 				10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */,
+				103633AE1CDC63BE00B8BACD /* BrokerDetailViewController.m in Sources */,
 				10026FCC1BEBB58C00F229F0 /* GogobitTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,12 +628,12 @@
 			baseConfigurationReference = 69AC3125523CCE6270DC48A6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Gogobit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -632,12 +686,12 @@
 			baseConfigurationReference = 5ECDDF78059F1E82C240C7A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Gogobit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

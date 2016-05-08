@@ -23,5 +23,10 @@ typedef NS_ENUM(NSInteger, ExchangeCode) {
 + (instancetype)sharedClient;
 - (NSURLSessionDataTask *)getExchangePriceWithName:(NSInteger)code andSender:(id<GogobitHttpProtocol>)sender;
 - (void)checkNetworkReachableWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getPostsWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getYesterDayPriceWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getNewsSourceListWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getBitoexBrokerPriceWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getMaicoinBrokerPriceWithSender:(id<GogobitHttpProtocol>)sender;
 
 @end

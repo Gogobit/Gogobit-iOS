@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeRateViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation ExchangeRateViewController 
 
@@ -20,7 +21,16 @@
     self.isUserEntering = NO;
     self.isFiatDisplaySelected = NO;
     self.isFloatPointAppear = NO;
+//    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    button.frame = CGRectMake(20, 50, 100, 30);
+//    [button setTitle:@"Crash" forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(crashButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:button];
 }
+
+//- (IBAction)crashButtonTapped:(id)sender {
+//    [[Crashlytics sharedInstance] crash];
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -34,7 +44,6 @@
         self.rate = [averageUsdPrice doubleValue];
         [self.fiatCurrencyTypeButton setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"] forState:UIControlStateNormal];
     }
-
 }
 
 - (IBAction)selectFiat:(UIButton *)sender {
@@ -94,9 +103,6 @@
         double result = [self.btcDisplayLabel.text doubleValue];
         self.fiatDisplayLabel.text = [NSString stringWithFormat:@"%.3f", result * self.rate];
     }
-
-
-
     NSLog(@"%@", @"pressDigit!");
 }
 
@@ -162,10 +168,6 @@
             self.isFloatPointAppear = YES;
         }
     }
-}
-
-- (void)appDidGetMaicoinTWDWithData:(NSDictionary *)data {
-//    NSLog(data);
 }
 
 - (void)didReceiveMemoryWarning {

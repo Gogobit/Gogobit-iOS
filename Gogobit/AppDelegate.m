@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import "Flurry.h"
 
 @interface AppDelegate ()
 
@@ -14,12 +17,19 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Flurry startSession:@"YWQGWR7W4DN73P58J433"];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    [[NSUserDefaults standardUserDefaults] setObject:@"TWD" forKey:@"currencyType"];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLaunch"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"TWD" forKey:@"currencyType"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"111111111111" forKey:@"sourceQueryCode"];
+        [[NSUserDefaults standardUserDefaults] setObject:@15 forKey:@"secondsForUpdate"];
+    }
+    [Fabric with:@[[Crashlytics class]]];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstLaunch"];
+    sleep(1);
     return YES;
 }
 

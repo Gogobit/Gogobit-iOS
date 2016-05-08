@@ -14,6 +14,8 @@
 
 @implementation ArticleWebViewController
 
+//NSInteger webViewLoads = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:self.articleUrl]];
@@ -24,17 +26,30 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
+    [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(forcedToStopHud) userInfo:nil repeats:NO];
+    if (self.count == 0) {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.labelText = NSLocalizedString(@"讀取中...", @"");
+        self.count++;
+    }
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"Web View Did Fail Load With Error : %@",error);
+    [self.hud hide:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.hud hide:YES];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)forcedToStopHud {
+    [self.hud hide:YES];
 }
 
 /*
