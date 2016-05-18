@@ -29,8 +29,43 @@
     }
     [Fabric with:@[[Crashlytics class]]];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstLaunch"];
+
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeNewsstandContentAvailability| UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     sleep(1);
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    //Format token as you need:
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    [NSUserDefaults standardUserDefaults] setObject:token forKey:@"deviceToken"];
+    NSLog(@"%@",token);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // Handle your remote RemoteNotification
+    NSLog(@"Got push notification!");
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error:%@", error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

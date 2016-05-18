@@ -21,6 +21,9 @@ NSString *const OKCOIN_USD_PRICE_API = @"https://www.okcoin.com/api/ticker.do?ok
 NSString *const GOGOBIT_NEWS_API = @"http://www.gogobit.com/api/v0/news/query?queryCode=";
 NSString *const YESTERDAY_USD_PRICE_API = @"https://api.coinbase.com/v2/prices/spot?date=";
 NSString *const GOGOBIT_NEWS_SOURCE_LIST = @"http://www.gogobit.com/api/v0/news/sources";
+NSString *const GOGOBIT_ALARM_LIST_API = @"http://www.gogobit.com/api/v0/alarm/list";
+NSString *const GOGOBIT_SET_ALARM_API = @"http://www.gogobit.com/api/v0/alarm/set";
+NSString *const GOGOBIT_DELETE_ALARM_API = @"http://www.gogobit.com/api/v0/alarm/delete";
 
 
 
@@ -153,7 +156,47 @@ NSString *const GOGOBIT_NEWS_SOURCE_LIST = @"http://www.gogobit.com/api/v0/news/
     }];
 }
 
+- (NSURLSessionDataTask *)getDeviceAlarmListWithSender:(id<GogobitHttpProtocol>)sender {
+    return [self doGET:GOGOBIT_ALARM_LIST_API parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([sender respondsToSelector:@selector(flowDidGetMaicoinBrokerPriceWithData:)]) {
+            [sender flowDidGetMaicoinBrokerPriceWithData:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSInteger code = [(NSHTTPURLResponse *)task.response statusCode];
+        NSString *errorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        if ([sender respondsToSelector:@selector(flowGetMaicoinBrokerPriceDidFailWithCode:andResponse:)]) {
+            [sender flowGetMaicoinBrokerPriceDidFailWithCode:code andResponse:errorResponse];
+        }
+    }];
+}
 
+- (NSURLSessionDataTask *)setAlarmWithSender:(id<GogobitHttpProtocol>)sender andAlarmObject:(NSDictionary *)alarmObject {
+    return [self doPOST:GOGOBIT_SET_ALARM_API parameters:alarmObject success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([sender respondsToSelector:@selector(flowDidGetMaicoinBrokerPriceWithData:)]) {
+            [sender flowDidGetMaicoinBrokerPriceWithData:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSInteger code = [(NSHTTPURLResponse *)task.response statusCode];
+        NSString *errorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        if ([sender respondsToSelector:@selector(flowGetMaicoinBrokerPriceDidFailWithCode:andResponse:)]) {
+            [sender flowGetMaicoinBrokerPriceDidFailWithCode:code andResponse:errorResponse];
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)deleteAlarmWithSender:(id<GogobitHttpProtocol>)sender andAlarmObject:(NSDictionary *)alarmObject {
+    return [self doPOST:GOGOBIT_DELETE_ALARM_API parameters:alarmObject success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([sender respondsToSelector:@selector(flowDidGetMaicoinBrokerPriceWithData:)]) {
+            [sender flowDidGetMaicoinBrokerPriceWithData:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSInteger code = [(NSHTTPURLResponse *)task.response statusCode];
+        NSString *errorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        if ([sender respondsToSelector:@selector(flowGetMaicoinBrokerPriceDidFailWithCode:andResponse:)]) {
+            [sender flowGetMaicoinBrokerPriceDidFailWithCode:code andResponse:errorResponse];
+        }
+    }];
+}
 
 - (NSString *)getUrlWithName:(NSInteger)name {
     NSString *url = [[NSString alloc] init];

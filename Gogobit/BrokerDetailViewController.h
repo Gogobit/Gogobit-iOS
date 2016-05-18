@@ -10,4 +10,6 @@
 
 @interface BrokerDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *alarmTableView;
+
 @end

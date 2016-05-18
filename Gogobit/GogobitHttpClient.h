@@ -28,5 +28,8 @@ typedef NS_ENUM(NSInteger, ExchangeCode) {
 - (NSURLSessionDataTask *)getNewsSourceListWithSender:(id<GogobitHttpProtocol>)sender;
 - (NSURLSessionDataTask *)getBitoexBrokerPriceWithSender:(id<GogobitHttpProtocol>)sender;
 - (NSURLSessionDataTask *)getMaicoinBrokerPriceWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)getDeviceAlarmListWithSender:(id<GogobitHttpProtocol>)sender;
+- (NSURLSessionDataTask *)setAlarmWithSender:(id<GogobitHttpProtocol>)sender andAlarmObject:(NSDictionary *)alarmObject;
+- (NSURLSessionDataTask *)deleteAlarmWithSender:(id<GogobitHttpProtocol>)sender andAlarmObject:(NSDictionary *)alarmObject;
 
 @end

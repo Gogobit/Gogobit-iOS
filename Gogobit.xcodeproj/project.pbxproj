@@ -26,10 +26,14 @@
 		1046F8A81C809F4700C48198 /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1046F8A71C809F4700C48198 /* ExchangeTableViewCell.xib */; };
 		1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */; };
 		1051CFAB1CCB53050074370E /* launchView.png in Resources */ = {isa = PBXBuildFile; fileRef = 1051CFAA1CCB53050074370E /* launchView.png */; };
+		106DBCFD1CE892A500D6DD61 /* AlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106DBCFC1CE892A500D6DD61 /* AlarmListViewController.m */; };
+		106DBD001CE89F2C00D6DD61 /* SetAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106DBCFF1CE89F2C00D6DD61 /* SetAlarmViewController.m */; };
 		107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107C99EE1C8E894300C79A3D /* AboutViewController.m */; };
 		109B68711CC5DBCD0087973D /* GogobitHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109B68701CC5DBCD0087973D /* GogobitHttpClient.m */; };
 		10CB8DD91CDEE9E100373EBB /* FanpageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8DD81CDEE9E100373EBB /* FanpageViewController.m */; };
 		10E759701BECFBE800BB78FA /* ExchangeRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */; };
+		10EEE7881CE4676100D1E222 /* AlarmTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EEE7861CE4676100D1E222 /* AlarmTableViewCell.m */; };
+		10EEE7891CE4676100D1E222 /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10EEE7871CE4676100D1E222 /* AlarmTableViewCell.xib */; };
 		10F751901CD8388F0098337C /* NewsSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F7518F1CD8388F0098337C /* NewsSourcesViewController.m */; };
 		10F751941CD840F50098337C /* SourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F751921CD840F50098337C /* SourceCollectionViewCell.m */; };
 		10F751951CD840F50098337C /* SourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F751931CD840F50098337C /* SourceCollectionViewCell.xib */; };
@@ -89,6 +93,10 @@
 		1046F8AA1C80A27C00C48198 /* ExchangeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExchangeTableViewCell.h; path = ExchangeTableViewCell/ExchangeTableViewCell.h; sourceTree = "<group>"; };
 		1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExchangeTableViewCell.m; path = ExchangeTableViewCell/ExchangeTableViewCell.m; sourceTree = "<group>"; };
 		1051CFAA1CCB53050074370E /* launchView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchView.png; sourceTree = "<group>"; };
+		106DBCFB1CE892A500D6DD61 /* AlarmListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmListViewController.h; sourceTree = "<group>"; };
+		106DBCFC1CE892A500D6DD61 /* AlarmListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmListViewController.m; sourceTree = "<group>"; };
+		106DBCFE1CE89F2B00D6DD61 /* SetAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetAlarmViewController.h; sourceTree = "<group>"; };
+		106DBCFF1CE89F2C00D6DD61 /* SetAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetAlarmViewController.m; sourceTree = "<group>"; };
 		107C99ED1C8E894300C79A3D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		107C99EE1C8E894300C79A3D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		109B686F1CC5DBCD0087973D /* GogobitHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpClient.h; sourceTree = "<group>"; };
@@ -98,6 +106,9 @@
 		10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeRateViewController.h; sourceTree = "<group>"; };
 		10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeRateViewController.m; sourceTree = "<group>"; };
 		10E759741BEE59E800BB78FA /* GogobitHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogobitHttpProtocol.h; sourceTree = "<group>"; };
+		10EEE7851CE4676100D1E222 /* AlarmTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmTableViewCell.h; sourceTree = "<group>"; };
+		10EEE7861CE4676100D1E222 /* AlarmTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmTableViewCell.m; sourceTree = "<group>"; };
+		10EEE7871CE4676100D1E222 /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmTableViewCell.xib; sourceTree = "<group>"; };
 		10F7518E1CD8388F0098337C /* NewsSourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSourcesViewController.h; sourceTree = "<group>"; };
 		10F7518F1CD8388F0098337C /* NewsSourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSourcesViewController.m; sourceTree = "<group>"; };
 		10F751911CD840F50098337C /* SourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -183,13 +194,18 @@
 			children = (
 				1046DF6C1BE7C7D700139757 /* AppDelegate.h */,
 				1046DF6D1BE7C7D700139757 /* AppDelegate.m */,
+				10EEE78A1CE4676E00D1E222 /* Alarm */,
 				1046F8A91C80A22900C48198 /* ExchangeTableViewCell */,
-				1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */,
-				1046DF701BE7C7D700139757 /* CurrencyListViewController.m */,
-				103633AC1CDC63BE00B8BACD /* BrokerDetailViewController.h */,
-				103633AD1CDC63BE00B8BACD /* BrokerDetailViewController.m */,
 				10F751961CD840FF0098337C /* Source */,
 				10104FE21CBAA654005BAB5D /* Article */,
+				1046DF6F1BE7C7D700139757 /* CurrencyListViewController.h */,
+				1046DF701BE7C7D700139757 /* CurrencyListViewController.m */,
+				106DBCFB1CE892A500D6DD61 /* AlarmListViewController.h */,
+				106DBCFC1CE892A500D6DD61 /* AlarmListViewController.m */,
+				106DBCFE1CE89F2B00D6DD61 /* SetAlarmViewController.h */,
+				106DBCFF1CE89F2C00D6DD61 /* SetAlarmViewController.m */,
+				103633AC1CDC63BE00B8BACD /* BrokerDetailViewController.h */,
+				103633AD1CDC63BE00B8BACD /* BrokerDetailViewController.m */,
 				10E7596E1BECFBE800BB78FA /* ExchangeRateViewController.h */,
 				10E7596F1BECFBE800BB78FA /* ExchangeRateViewController.m */,
 				100D0AAA1C8B29AA00381929 /* SettingsViewController.h */,
@@ -249,6 +265,16 @@
 				1046F8AB1C80A27C00C48198 /* ExchangeTableViewCell.m */,
 			);
 			name = ExchangeTableViewCell;
+			sourceTree = "<group>";
+		};
+		10EEE78A1CE4676E00D1E222 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				10EEE7851CE4676100D1E222 /* AlarmTableViewCell.h */,
+				10EEE7861CE4676100D1E222 /* AlarmTableViewCell.m */,
+				10EEE7871CE4676100D1E222 /* AlarmTableViewCell.xib */,
+			);
+			name = Alarm;
 			sourceTree = "<group>";
 		};
 		10F751961CD840FF0098337C /* Source */ = {
@@ -395,6 +421,7 @@
 				103DF9321C945F6400C7C651 /* Launch Screen.storyboard in Resources */,
 				1046DF741BE7C7D700139757 /* Main.storyboard in Resources */,
 				10F751951CD840F50098337C /* SourceCollectionViewCell.xib in Resources */,
+				10EEE7891CE4676100D1E222 /* AlarmTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,13 +510,16 @@
 				1046DF711BE7C7D700139757 /* CurrencyListViewController.m in Sources */,
 				10104FCE1CB7D5C1005BAB5D /* ArticlesFlowViewController.m in Sources */,
 				10F751941CD840F50098337C /* SourceCollectionViewCell.m in Sources */,
+				106DBD001CE89F2C00D6DD61 /* SetAlarmViewController.m in Sources */,
 				10104FE51CBB4AFA005BAB5D /* ArticleWebViewController.m in Sources */,
 				1046DF6E1BE7C7D700139757 /* AppDelegate.m in Sources */,
+				10EEE7881CE4676100D1E222 /* AlarmTableViewCell.m in Sources */,
 				1046DF6B1BE7C7D700139757 /* main.m in Sources */,
 				100D0AAF1C8BA83D00381929 /* FeedbackWebViewController.m in Sources */,
 				10104FDC1CBA8BEA005BAB5D /* ArticleCollectionViewCell.m in Sources */,
 				100D0AAC1C8B29AA00381929 /* SettingsViewController.m in Sources */,
 				107C99EF1C8E894300C79A3D /* AboutViewController.m in Sources */,
+				106DBCFD1CE892A500D6DD61 /* AlarmListViewController.m in Sources */,
 				1046F8AC1C80A27C00C48198 /* ExchangeTableViewCell.m in Sources */,
 				10CB8DD91CDEE9E100373EBB /* FanpageViewController.m in Sources */,
 				10F751901CD8388F0098337C /* NewsSourcesViewController.m in Sources */,
