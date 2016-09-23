@@ -19,7 +19,7 @@ NSString *const COINBASE_USD_PRICE_API = @"https://api.coinbase.com/v2/prices/sp
 NSString *const BITSTAMP_USD_PRICE_API = @"https://www.bitstamp.net/api/ticker/";
 NSString *const OKCOIN_USD_PRICE_API = @"https://www.okcoin.com/api/ticker.do?ok=1";
 NSString *const GOGOBIT_NEWS_API = @"http://www.gogobit.com/api/v0/news/query?queryCode=";
-NSString *const YESTERDAY_USD_PRICE_API = @"https://api.coinbase.com/v2/prices/spot?date=";
+NSString *const YESTERDAY_USD_PRICE_API = @"https://api.coinbase.com/v2/prices/BTC-USD/spot?date=";
 NSString *const GOGOBIT_NEWS_SOURCE_LIST = @"http://www.gogobit.com/api/v0/news/sources";
 NSString *const GOGOBIT_ALARM_LIST_API = @"http://www.gogobit.com/api/v0/alarm/list";
 NSString *const GOGOBIT_SET_ALARM_API = @"http://www.gogobit.com/api/v0/alarm/set";

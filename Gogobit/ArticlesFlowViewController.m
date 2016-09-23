@@ -36,7 +36,7 @@
     [button setTitleColor:[UIColor colorWithHexString:@"#FF8B10"] forState:UIControlStateNormal];
     [button setTitle:@"來源" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(toChooseArticleSource) forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(0, 0, 36, 36)];
+    [button setFrame:CGRectMake(0, 0, 40, 40)];
     UIBarButtonItem *sourceButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.tabBarController.navigationItem.rightBarButtonItem = sourceButton;
 
