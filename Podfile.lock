@@ -25,15 +25,22 @@ PODS:
     - AFNetworking/NSURLSession
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
+  - CRToast (0.0.9)
+  - EAIntroView (2.9.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
   - Fabric (1.6.7)
   - Flurry-iOS-SDK/FlurrySDK (7.6.0)
   - MBProgressHUD (0.9.2)
+  - MYBlurIntroductionView (1.0.3)
   - ObjcAssociatedObjectHelpers (2.0.1):
     - ObjcAssociatedObjectHelpers/Core (= 2.0.1)
     - ObjcAssociatedObjectHelpers/NSObject+Dictionary (= 2.0.1)
   - ObjcAssociatedObjectHelpers/Core (2.0.1)
   - ObjcAssociatedObjectHelpers/NSObject+Dictionary (2.0.1):
     - ObjcAssociatedObjectHelpers/Core
+  - SMPageControl (1.2)
+  - TWMessageBarManager (1.8.1)
   - YYCache (1.0.3)
   - YYCategories (1.0.2):
     - YYCategories/no-arc (= 1.0.2)
@@ -49,9 +56,14 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFNetworking+AutoRetry
   - Crashlytics
+  - CRToast (~> 0.0.7)
+  - EAIntroView (~> 2.9.0)
   - Fabric
   - Flurry-iOS-SDK/FlurrySDK
   - MBProgressHUD (~> 0.9.1)
+  - MYBlurIntroductionView
+  - SMPageControl (~> 1.2)
+  - TWMessageBarManager
   - YYCategories
   - YYWebImage
 
@@ -59,10 +71,16 @@ SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
   AFNetworking+AutoRetry: 5987ec96155e58fe356f1a3e91e79e5f3be6296a
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
+  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Flurry-iOS-SDK: 9822fe709195f0e3ae3e52c785eee9ff651ff648
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MYBlurIntroductionView: b12651c25574580472ff34989a4c5b81c157009f
   ObjcAssociatedObjectHelpers: 686c291f292c26a49b9b1fa7d58130a8d35d59d2
+  SMPageControl: 922892813001cfaf059e86e6801f46a967e9ee29
+  TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
   YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
   YYCategories: 7319e4ba4f4d4dbcec0094abaab540e98f04a65f
   YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0

@@ -10,6 +10,8 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Flurry.h"
+#import "TWMessageBarManager.h"
+#import "CRToast.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +25,8 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLaunch"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isInstruction"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"simulator" forKey:@"deviceToken"];
         [[NSUserDefaults standardUserDefaults] setObject:@"TWD" forKey:@"currencyType"];
         [[NSUserDefaults standardUserDefaults] setObject:@"111111111111" forKey:@"sourceQueryCode"];
         [[NSUserDefaults standardUserDefaults] setObject:@15 forKey:@"secondsForUpdate"];
@@ -50,18 +54,28 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    #if TARGET_IPHONE_SIMULATOR
+    [[NSUserDefaults standardUserDefaults] setObject:@"simulator" forKey:@"deviceToken"];
+    #else
     NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
-    //Format token as you need:
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
     token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    [NSUserDefaults standardUserDefaults] setObject:token forKey:@"deviceToken"];
-    NSLog(@"%@",token);
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"deviceToken"];
+    NSLog(@"token: %@",token);
+    #endif
+    NSLog(@"%@",[[UIDevice currentDevice] model]);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // Handle your remote RemoteNotification
     NSLog(@"Got push notification!");
+    if (application.applicationState == UIApplicationStateActive ) {
+        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"通知"
+                                                       description:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+                                                              type:TWMessageBarMessageTypeError
+                                                          duration:5.0];
+    }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

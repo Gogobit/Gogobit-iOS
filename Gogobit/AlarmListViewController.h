@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GogobitHttpClient.h"
+#import "AlarmTableViewCell.h"
+#import "SetAlarmViewController.h"
 
-@interface AlarmListViewController : UIViewController
+@interface AlarmListViewController : UIViewController <GogobitHttpProtocol>
+
+@property (weak, nonatomic) IBOutlet UITableView *alarmTableView;
 
 @end

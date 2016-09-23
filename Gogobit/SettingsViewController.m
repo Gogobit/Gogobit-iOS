@@ -25,6 +25,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.topItem.title = @"設定";
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
     [self.tableView reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -10,24 +10,74 @@
 
 @interface SetAlarmViewController ()
 
-@property (nonatomic, strong) NSString *deviceToken;
-@property (nonatomic, strong) NSString *state;
-@property (nonatomic, strong) NSString *priceType;
-@property (nonatomic, strong) NSString *sourceName;
-@property (nonatomic, strong) NSString *currencyType;
-@property (nonatomic, strong) NSString *desc;
-@property (nonatomic, strong) NSNumber *serialNumber;
-@property (nonatomic, strong) NSNumber *price;
-
 @end
 
 @implementation SetAlarmViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
-    self.currencyType = @"twd";
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+    if (self.isAdd) {
+        self.currencyType = @"twd";
+        self.desc = @"default";
+        self.sourceName = @"maicoin";
+        self.priceType = @"buy";
+        self.state = @"onetime";
+        self.price = @10000;
+    }
+    else {
+        self.priceTypeSegmentedBar.selectedSegmentIndex = [self getSegementedIndexWithPriceType:self.priceType];
+        self.stateSegmentedBar.selectedSegmentIndex = [self getSegementedIndexWithState:self.state];
+        self.brokerSegmentedBar.selectedSegmentIndex = [self getSegementedIndexWithSourceName:self.sourceName];
+        self.priceTextField.text = [self.price stringValue];
+        self.desc = @"default";
+        self.currencyType = @"twd";
+    }
+    if (self.brokerSegmentedBar.selectedSegmentIndex == 0) {
+        self.nowBuyPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"MaicoinBuyPrice"] stringValue];
+        self.nowSellPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"MaicoinSellPrice"] stringValue];
+    }
+    else {
+        self.nowBuyPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BitoexBuyPrice"] stringValue];
+        self.nowSellPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BitoexSellPrice"] stringValue];
+    }
+}
+
+
+- (NSUInteger)getSegementedIndexWithSourceName:(NSString *)sourceName {
+    if ([sourceName isEqualToString:@"maicoin"]) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+- (NSUInteger)getSegementedIndexWithPriceType:(NSString *)priceType {
+    if ([priceType isEqualToString:@"buy"]) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+- (NSUInteger)getSegementedIndexWithState:(NSString *)state {
+    if ([state isEqualToString:@"onetime"]) {
+        return 0;
+    }
+    else if ([state isEqualToString:@"off"]) {
+        self.state = @"persistent";
+        return 1;
+    }
+    else {
+        return 1;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,11 +96,36 @@
 */
 
 - (IBAction)saveAction:(id)sender {
-    NSDictionary *alarmObject = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 self.deviceToken, @"deviceToken",
-                                 self.serialNumber, @"serialNumber",
-                                 self.
-                                 nil]
+    NSLog(@"save!");
+    NSMutableDictionary *alarmObject = [NSMutableDictionary dictionaryWithObjectsAndKeys:self.deviceToken, @"deviceToken", nil];
+    [alarmObject setValue:self.serialNumber forKey:@"serialNumber"];
+    [alarmObject setObject:self.sourceName forKey:@"sourceName"];
+    [alarmObject setValue:self.price forKey:@"price"];
+    [alarmObject setObject:self.priceType forKey:@"priceType"];
+    [alarmObject setObject:self.state forKey:@"state"];
+    [alarmObject setObject:self.desc forKey:@"desc"];
+    [alarmObject setObject:self.currencyType forKey:@"currencyType"];
+
+    [[GogobitHttpClient sharedClient] setAlarmWithSender:self andAlarmObject:alarmObject];
+//    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)alarmDidSetListWithData:(id)data {
+    NSLog(@"success set alarm: %@", data);
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
+//    [[GogobitHttpClient sharedClient] getDeviceAlarmListWithSender:self];
+}
+
+- (void)alarmSetDidFailWithCode:(NSInteger)code andResponse:(NSString *)errorResponse {
+    NSLog(@"fail set code: %lu, and error: %@", code, errorResponse);
+//    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    if ([segue.identifier isEqualToString:@"unwindToAlarmListSegue"]) {
+        NSLog(@"Violets are %@", segue.identifier);
+    }
 }
 
 - (IBAction)backgroundTap:(id)sender {
@@ -68,11 +143,15 @@
         case 0:
             NSLog(@"Maicoin");
             self.sourceName = @"maicoin";
+            self.nowBuyPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"MaicoinBuyPrice"] stringValue];
+            self.nowSellPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"MaicoinSellPrice"] stringValue];
             break;
 
         case 1:
             NSLog(@"Bitoex");
             self.sourceName = @"bitoex";
+            self.nowBuyPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BitoexBuyPrice"] stringValue];
+            self.nowSellPriceLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BitoexSellPrice"] stringValue];
             break;
         default:
             NSLog(@"Something Error");

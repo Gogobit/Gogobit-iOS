@@ -35,6 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"比特幣換算機";
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
     NSNumber *averageUsdPrice = [[NSUserDefaults standardUserDefaults] objectForKey:@"AveragePrice"];
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"currencyType"] isEqualToString:@"TWD"]) {
         self.rate = [averageUsdPrice doubleValue] * [[[NSUserDefaults standardUserDefaults] objectForKey:@"currency"] doubleValue];

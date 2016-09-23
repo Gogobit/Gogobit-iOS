@@ -15,5 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *brokerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *priceTypeLabel;
+@property (nonatomic) NSUInteger serialNumber;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 
 @end

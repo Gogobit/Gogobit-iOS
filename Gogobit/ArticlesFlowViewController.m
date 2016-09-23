@@ -45,7 +45,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.tabBarController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)toChooseArticleSource {

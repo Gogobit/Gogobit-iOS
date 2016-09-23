@@ -8,8 +8,12 @@
 
 #import "CurrencyListViewController.h"
 #import "ExchangeTableViewCell.h"
+#import "CRToast.h"
 
-@interface CurrencyListViewController ()
+@interface CurrencyListViewController () <EAIntroDelegate> {
+    UIView *rootView;
+    EAIntroView *_intro;
+}
 
 @property (nonatomic, strong) NSMutableArray *exchangeNameList;
 @property (nonatomic, strong) NSMutableArray *currencyList;
@@ -64,6 +68,7 @@ int secondsLeft;
     self.avgPriceLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToChangeAvgCurrencyType)];
     [self.avgPriceLabel addGestureRecognizer:tapGesture];
+    rootView = self.navigationController.view;
 }
 
 - (void)tapToChangeAvgCurrencyType {
@@ -80,13 +85,20 @@ int secondsLeft;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"交易所";
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
     [self getAveragePrice];
     [self.currencyTableView reloadData];
     [[GogobitHttpClient sharedClient] checkNetworkReachableWithSender:self];
     [[GogobitHttpClient sharedClient] getNewsSourceListWithSender:self];
+    [[GogobitHttpClient sharedClient] getBitoexBrokerPriceWithSender:self];
+    [[GogobitHttpClient sharedClient] getMaicoinBrokerPriceWithSender:self];
     secondsLeft = [[[NSUserDefaults standardUserDefaults] objectForKey:@"secondsForUpdate"] intValue];
     self.autoTimer = [NSTimer scheduledTimerWithTimeInterval:[[[NSUserDefaults standardUserDefaults] objectForKey:@"secondsForUpdate"] floatValue] target:self selector:@selector(getAllExchangesCurrency) userInfo:nil repeats:YES];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCountdown) userInfo:nil repeats: YES];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isInstruction"]) {
+        [self showIntroWithCustomView];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isInstruction"];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -258,7 +270,7 @@ int secondsLeft;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == Bitoex) {
-        [self performSegueWithIdentifier:@"ToBrokerDetailSegue" sender:self];
+//        [self performSegueWithIdentifier:@"ToBrokerDetailSegue" sender:self];
     }
 }
 
@@ -335,6 +347,33 @@ int secondsLeft;
     NSLog(@"errorResponse: %@", errorResponse);
 }
 
+- (void)flowDidGetBitoexBrokerPriceWithData:(id)data {
+    NSLog(@"Bitoex: %@", data);
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *buyPrice = data[@"buy"];
+    NSNumber *sellPrice = data[@"sell"];
+    [[NSUserDefaults standardUserDefaults] setObject:buyPrice forKey:@"BitoexBuyPrice"];
+    [[NSUserDefaults standardUserDefaults] setObject:sellPrice forKey:@"BitoexSellPrice"];
+}
+
+- (void)flowGetBitoexBrokerPriceDidFailWithCode:(NSInteger)code andResponse:(NSString *)errorResponse {
+
+}
+
+- (void)flowDidGetMaicoinBrokerPriceWithData:(id)data {
+    NSLog(@"Maicoin: %@", data);
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *buyPrice = [f numberFromString:data[@"buy_price"]];
+    NSNumber *sellPrice = [f numberFromString:data[@"sell_price"]];
+    [[NSUserDefaults standardUserDefaults] setObject:buyPrice forKey:@"MaicoinBuyPrice"];
+    [[NSUserDefaults standardUserDefaults] setObject:sellPrice forKey:@"MaicoinSellPrice"];
+}
+
+- (void)flowGetMaicoinBrokerPriceDidFailWithCode:(NSInteger)code andResponse:(NSString *)errorResponse {
+
+}
 
 - (void)getBitoexPrice {
     [[GogobitHttpClient sharedClient] getExchangePriceWithName:Bitoex andSender:self];
@@ -356,6 +395,38 @@ int secondsLeft;
     CFRelease(puuid);
     CFRelease(uuidString);
     return result;
+}
+
+- (void)showIntroWithCustomView {
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title = @"v0.3.1 版鬧鐘功能介紹！";
+    page1.desc = @"現支援台灣兩家買賣比特幣價格提醒，Maicoin 與 Bitoex 皆可設定，更可設定持續提醒，每 15 分鐘提醒一次！";
+    page1.bgImage = [UIImage imageNamed:@"instruction1"];
+    page1.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title1"]];
+
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"App 內通知畫面";
+    page2.desc = @"使用 Gogobit 時，能收到提醒。";
+    page2.bgImage = [UIImage imageNamed:@"instruction2"];
+    page2.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title2"]];
+
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"刪除";
+    page3.desc = @"想要刪除鬧鐘，只要左滑即可刪除。";
+    page3.bgImage = [UIImage imageNamed:@"instruction3"];
+    page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title3"]];
+
+    EAIntroPage *page4 = [EAIntroPage page];
+    page4.title = @"即使鎖定畫面，也能收到通知。";
+    page4.desc = @"隨時接收消息，絕不錯過任何先機！";
+    page4.bgImage = [UIImage imageNamed:@"instruction4"];
+    page4.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title4"]];
+
+    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:rootView.bounds andPages:@[page1,page2,page3,page4]];
+    [intro.skipButton setTitle:@"Skip now" forState:UIControlStateNormal];
+    [intro setDelegate:self];
+
+    [intro showInView:rootView animateDuration:0.3];
 }
 
 @end

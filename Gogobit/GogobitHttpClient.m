@@ -157,15 +157,16 @@ NSString *const GOGOBIT_DELETE_ALARM_API = @"http://www.gogobit.com/api/v0/alarm
 }
 
 - (NSURLSessionDataTask *)getDeviceAlarmListWithSender:(id<GogobitHttpProtocol>)sender {
-    return [self doGET:GOGOBIT_ALARM_LIST_API parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([sender respondsToSelector:@selector(flowDidGetMaicoinBrokerPriceWithData:)]) {
-            [sender flowDidGetMaicoinBrokerPriceWithData:responseObject];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+    return [self doGET:GOGOBIT_ALARM_LIST_API parameters:@{@"deviceToken": token} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([sender respondsToSelector:@selector(alarmDidGetListWithData:)]) {
+            [sender alarmDidGetListWithData:responseObject];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSInteger code = [(NSHTTPURLResponse *)task.response statusCode];
         NSString *errorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-        if ([sender respondsToSelector:@selector(flowGetMaicoinBrokerPriceDidFailWithCode:andResponse:)]) {
-            [sender flowGetMaicoinBrokerPriceDidFailWithCode:code andResponse:errorResponse];
+        if ([sender respondsToSelector:@selector(alarmGetListDidFailWithCode:andResponse:)]) {
+            [sender alarmGetListDidFailWithCode:code andResponse:errorResponse];
         }
     }];
 }
@@ -186,14 +187,14 @@ NSString *const GOGOBIT_DELETE_ALARM_API = @"http://www.gogobit.com/api/v0/alarm
 
 - (NSURLSessionDataTask *)deleteAlarmWithSender:(id<GogobitHttpProtocol>)sender andAlarmObject:(NSDictionary *)alarmObject {
     return [self doPOST:GOGOBIT_DELETE_ALARM_API parameters:alarmObject success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([sender respondsToSelector:@selector(flowDidGetMaicoinBrokerPriceWithData:)]) {
-            [sender flowDidGetMaicoinBrokerPriceWithData:responseObject];
+        if ([sender respondsToSelector:@selector(alarmDidDeleteListWithData:)]) {
+            [sender alarmDidDeleteListWithData:responseObject];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSInteger code = [(NSHTTPURLResponse *)task.response statusCode];
         NSString *errorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-        if ([sender respondsToSelector:@selector(flowGetMaicoinBrokerPriceDidFailWithCode:andResponse:)]) {
-            [sender flowGetMaicoinBrokerPriceDidFailWithCode:code andResponse:errorResponse];
+        if ([sender respondsToSelector:@selector(alarmDeleteDidFailWithCode:andResponse:)]) {
+            [sender alarmDeleteDidFailWithCode:code andResponse:errorResponse];
         }
     }];
 }
