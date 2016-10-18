@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "launch.png",
+      "filename" : "instruction4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "launch-1.png",
+      "filename" : "instruction4-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "launch-2.png",
+      "filename" : "instruction4-2.png",
       "scale" : "3x"
     }
   ],

@@ -11,8 +11,9 @@
 
 @interface ArticleWebViewController : UIViewController <UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *articleWebView;
+@property (strong, nonatomic) IBOutlet UIWebView *articleWebView;
 @property (nonatomic, weak) MBProgressHUD *hud;
 @property (nonatomic, weak) NSString *articleUrl;
+@property (nonatomic) NSInteger count;
 
 @end
